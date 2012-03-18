@@ -9,7 +9,7 @@ FactoryGirl.define do
     transports [ :u, :tram, :bus ]
   end
 
-  factory :hackerbrücke, :class => MVG::Live do
+  factory :hackerbruecke, :class => MVG::Live do
     station "Hackerbrücke"
     transports [ :tram, :s ]
   end

@@ -81,10 +81,10 @@ describe MVG::Live do
         @mvglive.station_unknown.must_equal true
       end
     end
-    
+
     describe "with S-Bahn" do
       before do
-        @mvglive = build(:hackerbrücke)
+        @mvglive = build(:hackerbruecke)
         @mvglive.retrieve
         @mvglive.parse
       end
