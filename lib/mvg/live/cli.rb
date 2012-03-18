@@ -43,11 +43,21 @@ module MVG
           txt += "=" * 48 + "\n"
         end
 
-        txt += "#{@station}: #{@transports.map(&:to_s).map(&:capitalize).join(", ")}\n"
-        txt += "=" * 38 + "[ #{@server_time} ]=\n"
+        if @station_unknown
+          txt += '   /!\ Station unknown!  Did you mean...? /!\   ' + "\n"
+          txt += "=" * 48 + "\n"
 
-        @result_sorted.each do |e|
-          txt += sprintf "%-4s| %-30s|%3d Minuten\n", e[:line], e[:destination], e[:minutes]
+          @station_alternates.each do |a|
+            txt += " - #{a}\n"
+          end
+
+        else
+          txt += "#{@station}: #{@transports.map(&:to_s).map(&:capitalize).join(", ")}\n"
+          txt += "=" * 38 + "[ #{@server_time} ]=\n"
+
+          @result_sorted.each do |e|
+            txt += sprintf "%-4s| %-30s|%3d Minuten\n", e[:line], e[:destination], e[:minutes]
+          end
         end
 
         txt
@@ -63,6 +73,9 @@ module MVG
 
         response[:result_sorted]      = result_sorted
         response[:result_display]     = result_display
+
+        response[:station_unknown]    = station_unknown
+        response[:station_alternates] = station_alternates
 
         response.to_json
       end

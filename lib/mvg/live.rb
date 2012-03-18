@@ -29,6 +29,8 @@ module MVG
     attr_reader :server_time
     attr_reader :cli
     attr_reader :using_config_file
+    attr_reader :station_unknown
+    attr_reader :station_alternates
 
     def initialize(*args)
       @station    = args.shift

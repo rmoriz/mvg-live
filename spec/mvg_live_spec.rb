@@ -74,6 +74,14 @@ describe MVG::Live do
   end
 
   describe "Parser" do
+    describe "unknown station" do
+      it "should inform about incorrent stations and possible fits" do
+        @mvglive = MVG::Live.new 'Moosfeld'
+        @mvglive.fetch
+        @mvglive.station_unknown.must_equal true
+      end
+    end
+    
     describe "with S-Bahn" do
       before do
         @mvglive = build(:hackerbrücke)
