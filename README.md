@@ -22,6 +22,32 @@ Returns a human readable listing of the next depatures
     $ mvg Marienplatz
     $ mvg Moosach Bf.
 
+example output:
+
+    ================================================
+    Hauptbahnhof: U, Bus, Tram, S
+    ======================================[ 09:03 ]=
+    19  | Pasing                        |  0 Minuten
+    16  | Romanplatz                    |  1 Minuten
+    U2  | Feldmoching                   |  1 Minuten
+    U1  | Mangfallplatz                 |  1 Minuten
+    S8  | Herrsching                    |  2 Minuten
+    U2  | Messestadt Ost                |  3 Minuten
+    17  | Schwanseestraße               |  3 Minuten
+    S7  | Aying                         |  4 Minuten
+    U4  | Arabellapark                  |  4 Minuten
+    U4  | Theresienwiese                |  5 Minuten
+    S6  | Ostbahnhof                    |  5 Minuten
+    U2  | Messestadt Ost                |  6 Minuten
+    S2  | Petershausen                  |  6 Minuten
+    20  | Moosach Bf.                   |  6 Minuten
+    U1  | Olympia - Einkaufszentrum     |  6 Minuten
+    19  | Pasing                        |  8 Minuten
+    U5  | Neuperlach Süd                |  8 Minuten
+    16  | Romanplatz                    |  8 Minuten
+    U5  | Laimer Platz                  |  9 Minuten
+    U1  | Mangfallplatz                 | 11 Minuten
+
 ### mvg_json
 
 Returns JSON
