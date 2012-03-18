@@ -75,7 +75,7 @@ Returns JSON
 
 ### User Preferences
 
-The user scan specify a default station or a default transport list (e.g. only specific transport systems) in a JSON file. This only affects the CLI version!
+You can specify a default station or a default transports list (e.g. only specific transport systems) in a JSON file. This only affects the CLI version!
 The first available file will be loaded:
 
 1. file specified in the environment variable: `MVG_FILE`
@@ -108,6 +108,10 @@ You can overwrite the station as mentioned above but the transport limitation is
     U5  | Laimer Platz                  |  8 Minuten
     U5  | Neuperlach Süd                | 12 Minuten
     ...
+
+The default transports list (= all available) is:
+
+   [ :u, :bus, :tram, :s ]
 
 ## Minitest-Specs
 
