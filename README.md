@@ -111,7 +111,13 @@ You can overwrite the station as mentioned above but the transport limitation is
 
 The default transports list (= all available) is:
 
+Ruby:
+
     [ :u, :bus, :tram, :s ]
+
+JSON:
+
+    ["u", "bus", "tram", "s"]
 
 ## Minitest-Specs
 
