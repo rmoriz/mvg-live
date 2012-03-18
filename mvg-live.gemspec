@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Roland Moriz"]
   s.email       = ["roland@moriz.de"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{A CLI and ruby client for mvg-live.de}
+  s.description = %q{A CLI and ruby client for mvg-live.de, the real-time interface to Munich's public transport}
 
   s.rubyforge_project = "mvg-live"
 
@@ -19,19 +19,22 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.required_ruby_version = '>= 1.9.1'
+  #s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 1.8.7'
 
   s.add_development_dependency "rake"
   s.add_development_dependency "minitest"
   s.add_development_dependency "minitest-reporters"
   s.add_development_dependency "factory_girl", "~> 2.1.0"
-  s.add_development_dependency "vcr"
+  s.add_development_dependency "vcr", "~> 2.0.0"
   s.add_development_dependency "growl"
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-minitest"
   s.add_development_dependency "pry"
 
-  s.add_runtime_dependency "activemodel", ">= 3.2.1"
-  s.add_runtime_dependency "faraday"
-  s.add_runtime_dependency "nokogiri"
+  s.add_runtime_dependency "activemodel",   "~> 3.2.2"
+  s.add_runtime_dependency "faraday",       "~> 0.7.6"
+  s.add_runtime_dependency "nokogiri",      "~> 1.5.2"
+  s.add_runtime_dependency "json"
+
 end

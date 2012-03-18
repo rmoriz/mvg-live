@@ -24,7 +24,7 @@ describe MVG::Live do
     end
 
     it "can be created for a specific transports" do
-      transports = [ :ubahn, :bus, :tram, :sbahn ]
+      transports = [ :u, :bus, :tram, :s ]
       mvglive = MVG::Live.new 'Westfriedhof', :transports => transports
       mvglive.transports.must_be_same_as transports
     end
@@ -124,4 +124,12 @@ describe MVG::Live do
 
     end
   end
+
+  describe "Output" do
+    describe "JSON" do
+
+
+    end
+  end
+
 end

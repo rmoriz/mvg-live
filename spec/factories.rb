@@ -6,12 +6,12 @@ FactoryGirl.define do
 
   factory :westfriedhof, :class => MVG::Live do
     station "Westfriedhof"
-    transports [ :ubahn, :tram, :bus ]
+    transports [ :u, :tram, :bus ]
   end
 
   factory :hackerbrücke, :class => MVG::Live do
     station "Hackerbrücke"
-    transports [ :tram, :sbahn ]
+    transports [ :tram, :s ]
   end
 
   factory :goethe_institut, :class => MVG::Live do

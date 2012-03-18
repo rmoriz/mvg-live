@@ -32,13 +32,14 @@ module MVG
         # <tr>
         # <td colspan="4" class="sBahnHeader">S-Bahn M&uuml;nchen (Daten DB Regio AG)</td>
 
+        @server_time = @doc.xpath('//td[@class="serverTimeColumn"]/text()')
+
         results = []
 
         @doc.xpath('//table[@class="departureTable departureView"]/tr[@class="rowOdd" or @class="rowEven"]').each do |entry|
           result = {}
-
           result[:line]        = entry.at('td[@class="lineColumn"]/text()').to_s.strip
-          result[:destination] = entry.at('td[@class="stationColumn"]/text()').to_s.encode("UTF-8").strip
+          result[:destination] = to_utf8(entry.at('td[@class="stationColumn"]/text()').to_s.strip)
           result[:minutes]     = entry.at('td[@class="inMinColumn"]/text()').to_s.to_i
 
           results << result
