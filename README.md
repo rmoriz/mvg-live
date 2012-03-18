@@ -48,6 +48,16 @@ example output:
     U5  | Laimer Platz                  |  9 Minuten
     U1  | Mangfallplatz                 | 11 Minuten
 
+displays alternates/suggestions in case of unclear/invalid station name:
+
+    $ mvg Tor
+    ================================================
+       /!\ Station unknown!  Did you mean...? /!\   
+    ================================================
+     - Am Münchner Tor
+     - Sendlinger Tor
+
+
 ### mvg_json
 
 Returns JSON
