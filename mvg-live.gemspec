@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
 require "mvg/live/version"
-require "mvg/live" # remove me?
 
 Gem::Specification.new do |s|
   s.name        = "mvg-live"
