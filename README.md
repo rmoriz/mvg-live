@@ -5,6 +5,9 @@ A ruby client and CLI for mvg-live.de the real-time interface for Munich's publi
 [![Build Status](https://secure.travis-ci.org/rmoriz/mvg-live.png?branch=master)](http://travis-ci.org/rmoriz/mvg-live)
 
 
+[![Flattr](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=flattr&url=https://github.com/rmoriz/mvg-live&title=mvg-live%20rubygem&description=mvg-live%20rubygem&language=de_DE&tags=fahrplan,mvg,swm,ruby,code,u-bahn,s-bahn,tram,muenchen&category=software)
+  
+  
 ## Installation
 
     gem install mvg-live
@@ -31,6 +34,10 @@ Returns a human readable listing of the next depatures
 
 example output:
 
+
+<img src="http://i.imgur.com/LLGYs.jpg">
+<img src="http://i.imgur.com/rO6Fz.jpg">
+
     ================================================
     Hauptbahnhof: U, Bus, Tram, S
     ======================================[ 09:03 ]=
@@ -55,6 +62,7 @@ example output:
     U5  | Laimer Platz                  |  9 Minuten
     U1  | Mangfallplatz                 | 11 Minuten
 
+
 displays alternates/suggestions in case of unclear/invalid station name:
 
     $ mvg Tor
@@ -72,6 +80,9 @@ Returns JSON
     $ mvg_json Hauptbahnhof
     $ mvg_json Marienplatz
     $ mvg_json Moosach Bf.
+
+<img src="http://i.imgur.com/7pxh9.jpg">
+
 
 ### User Preferences
 
@@ -118,6 +129,7 @@ Ruby:
 JSON:
 
     ["u", "bus", "tram", "s"]
+
 
 ## Minitest-Specs
 
