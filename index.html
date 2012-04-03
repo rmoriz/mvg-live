@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Mvg-live by rmoriz</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Mvg-live</h1>
+        <p>CLI and Ruby Client for mvg-live.de</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/rmoriz/mvg-live" class="button fork"><strong>Fork On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/rmoriz/mvg-live/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/rmoriz/mvg-live/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>MVG-LIVE</h1>
+
+<p>A ruby client and CLI for mvg-live.de the real-time interface for Munich's public transportation service.</p>
+
+<p><a href="http://travis-ci.org/rmoriz/mvg-live"><img src="https://secure.travis-ci.org/rmoriz/mvg-live.png?branch=master" alt="Build Status"></a></p>
+
+<p><a href="https://flattr.com/submit/auto?user_id=flattr&amp;url=https://github.com/rmoriz/mvg-live&amp;title=mvg-live%20rubygem&amp;description=mvg-live%20rubygem&amp;language=de_DE&amp;tags=fahrplan,mvg,swm,ruby,code,u-bahn,s-bahn,tram,muenchen&amp;category=software"><img src="https://api.flattr.com/button/flattr-badge-large.png" alt="Flattr"></a></p>
+
+<h2>Installation</h2>
+
+<pre><code>gem install mvg-live
+</code></pre>
+
+<h2>Ruby</h2>
+
+<pre><code>require 'mvg/live'
+
+result = MVG::Live.fetch 'Sendlinger Tor'
+=&gt; [{:line=&gt;"U7", :destination=&gt;"Westfriedhof", :minutes=&gt;0}, {:line=&gt;"U3", :destination=&gt;"Olympiazentrum", :minutes=&gt;0}, {:line=&gt;"17", :destination=&gt;"Schwanseestraße", :minutes=&gt;0}, {:line=&gt;"U3", :destination=&gt;"Fürstenried West", :minutes=&gt;0}, {:line=&gt;"16", :destination=&gt;"Romanplatz", :minutes=&gt;0}, {:line=&gt;"27", :destination=&gt;"Petuelring", :minutes=&gt;0}, {:line=&gt;"152", :destination=&gt;"Landshuter Allee", :minutes=&gt;1}, {:line=&gt;"U2", :destination=&gt;"Feldmoching", :minutes=&gt;1}, {:line=&gt;"18", :destination=&gt;"Effnerplatz", :minutes=&gt;1}, {:line=&gt;"U1", :destination=&gt;"Olympia-Einkaufsz.", :minutes=&gt;2}, {:line=&gt;"U7", :destination=&gt;"Neuperlach Zentrum", :minutes=&gt;2}, {:line=&gt;"U6", :destination=&gt;"Klinikum Großhadern", :minutes=&gt;2}, {:line=&gt;"U6", :destination=&gt;"Garching-Forschungs.", :minutes=&gt;3}, {:line=&gt;"18", :destination=&gt;"Gondrellplatz", :minutes=&gt;3}, {:line=&gt;"16", :destination=&gt;"St. Emmeram", :minutes=&gt;4}, {:line=&gt;"17", :destination=&gt;"Amalienburgstraße", :minutes=&gt;4}, {:line=&gt;"U3", :destination=&gt;"Moosach", :minutes=&gt;4}, {:line=&gt;"U3", :destination=&gt;"Fürstenried West", :minutes=&gt;5}, {:line=&gt;"U2", :destination=&gt;"Messestadt Ost", :minutes=&gt;5}, {:line=&gt;"U1", :destination=&gt;"Mangfallplatz", :minutes=&gt;6}]
+
+result = MVG::Live.fetch 'Sendlinger Tor', :transports =&gt; [ :tram ]
+=&gt; [{:line=&gt;"17", :destination=&gt;"Schwanseestraße", :minutes=&gt;0}, {:line=&gt;"16", :destination=&gt;"Romanplatz", :minutes=&gt;1}, {:line=&gt;"27", :destination=&gt;"Petuelring", :minutes=&gt;1}, {:line=&gt;"18", :destination=&gt;"Effnerplatz", :minutes=&gt;2}, {:line=&gt;"18", :destination=&gt;"Gondrellplatz", :minutes=&gt;3}, {:line=&gt;"16", :destination=&gt;"St. Emmeram", :minutes=&gt;4}, {:line=&gt;"17", :destination=&gt;"Amalienburgstraße", :minutes=&gt;5}, {:line=&gt;"16", :destination=&gt;"Romanplatz", :minutes=&gt;8}, {:line=&gt;"17", :destination=&gt;"Schwanseestraße", :minutes=&gt;9}, {:line=&gt;"27", :destination=&gt;"Petuelring", :minutes=&gt;9}, {:line=&gt;"18", :destination=&gt;"Effnerplatz", :minutes=&gt;9}, {:line=&gt;"18", :destination=&gt;"Gondrellplatz", :minutes=&gt;12}, {:line=&gt;"16", :destination=&gt;"St. Emmeram", :minutes=&gt;13}, {:line=&gt;"17", :destination=&gt;"Amalienburgstraße", :minutes=&gt;16}, {:line=&gt;"27", :destination=&gt;"Petuelring", :minutes=&gt;16}, {:line=&gt;"16", :destination=&gt;"Romanplatz", :minutes=&gt;17}, {:line=&gt;"18", :destination=&gt;"Effnerplatz", :minutes=&gt;17}, {:line=&gt;"17", :destination=&gt;"Schwanseestraße", :minutes=&gt;19}, {:line=&gt;"18", :destination=&gt;"Gondrellplatz", :minutes=&gt;22}, {:line=&gt;"16", :destination=&gt;"St. Emmeram", :minutes=&gt;23}]
+</code></pre>
+
+<h2>CLI (command line interface)</h2>
+
+<p>This gem provides two scripts:</p>
+
+<h3>mvg</h3>
+
+<p>Returns a human readable listing of the next depatures</p>
+
+<pre><code>$ mvg Hauptbahnhof
+$ mvg Marienplatz
+$ mvg Moosach Bf.
+</code></pre>
+
+<p>example output:</p>
+
+<p><img src="http://i.imgur.com/LLGYs.jpg"><img src="http://i.imgur.com/rO6Fz.jpg"></p>
+
+<pre><code>================================================
+Hauptbahnhof: U, Bus, Tram, S
+======================================[ 09:03 ]=
+19  | Pasing                        |  0 Minuten
+16  | Romanplatz                    |  1 Minuten
+U2  | Feldmoching                   |  1 Minuten
+U1  | Mangfallplatz                 |  1 Minuten
+S8  | Herrsching                    |  2 Minuten
+U2  | Messestadt Ost                |  3 Minuten
+17  | Schwanseestraße               |  3 Minuten
+S7  | Aying                         |  4 Minuten
+U4  | Arabellapark                  |  4 Minuten
+U4  | Theresienwiese                |  5 Minuten
+S6  | Ostbahnhof                    |  5 Minuten
+U2  | Messestadt Ost                |  6 Minuten
+S2  | Petershausen                  |  6 Minuten
+20  | Moosach Bf.                   |  6 Minuten
+U1  | Olympia - Einkaufszentrum     |  6 Minuten
+19  | Pasing                        |  8 Minuten
+U5  | Neuperlach Süd                |  8 Minuten
+16  | Romanplatz                    |  8 Minuten
+U5  | Laimer Platz                  |  9 Minuten
+U1  | Mangfallplatz                 | 11 Minuten
+</code></pre>
+
+<p>displays alternates/suggestions in case of unclear/invalid station name:</p>
+
+<pre><code>$ mvg Tor
+================================================
+   /!\ Station unknown!  Did you mean...? /!\   
+================================================
+ - Am Münchner Tor
+ - Sendlinger Tor
+</code></pre>
+
+<h3>mvg_json</h3>
+
+<p>Returns JSON</p>
+
+<pre><code>$ mvg_json Hauptbahnhof
+$ mvg_json Marienplatz
+$ mvg_json Moosach Bf.
+</code></pre>
+
+<p><img src="http://i.imgur.com/7pxh9.jpg"></p>
+
+<h3>User Preferences</h3>
+
+<p>You can specify a default station or a default transports list (e.g. only specific transport systems) in a JSON file. This only affects the CLI version!
+The first available file will be loaded:</p>
+
+<ol>
+<li>file specified in the environment variable: <code>MVG_FILE</code>
+</li>
+<li>an existing .mvg file in the current directory (<code>PWD</code>)</li>
+<li>an existing .mvg file in the home directory of the current user (<code>HOME</code>)</li>
+</ol><p>Example .mvg file:</p>
+
+<pre><code> {"default_transports":["u"],"default_station":"Hauptbahnhof"}
+</code></pre>
+
+<p>This limits the transports to U-Bahn and uses "Hauptbahnhof" as default station:</p>
+
+<pre><code>$ mvg
+=[                         /Users/rmoriz/.mvg ]=
+Hauptbahnhof: U
+======================================[ 13:34 ]=
+U1  | Mangfallplatz                 |  0 Minuten
+U2  | Feldmoching                   |  0 Minuten
+U4  | Arabellapark                  |  3 Minuten
+U4  | Theresienwiese                |  4 Minuten
+...
+</code></pre>
+
+<p>You can overwrite the station as mentioned above but the transport limitation is currently <em>global</em>!</p>
+
+<pre><code>$ mvg Ostbahnhof
+=[                         /Users/rmoriz/.mvg ]=
+Ostbahnhof: U
+======================================[ 13:37 ]=
+U5  | Neuperlach Süd                |  2 Minuten
+U5  | Laimer Platz                  |  8 Minuten
+U5  | Neuperlach Süd                | 12 Minuten
+...
+</code></pre>
+
+<p>The default transports list (= all available) is:</p>
+
+<p>Ruby:</p>
+
+<pre><code>[ :u, :bus, :tram, :s ]
+</code></pre>
+
+<p>JSON:</p>
+
+<pre><code>["u", "bus", "tram", "s"]
+</code></pre>
+
+<h2>Minitest-Specs</h2>
+
+<p>see "specs/"-directory</p>
+
+<h2>Disclaimer</h2>
+
+<p>This project is not related, acknowledged, sponsored... by MVG or SWM.
+Use on your own risk.</p>
+
+<h2>License</h2>
+
+<p>see LICENSE file (BSD)</p>
+
+<h2>Created by</h2>
+
+<p>Roland Moriz</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/rmoriz">rmoriz</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
