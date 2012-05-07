@@ -23,8 +23,6 @@ module MVG
         @response_obj = res
       end
 
-    private
-
       def build_request_params
         params = {}
         params[:haltestelle] = station_to_mvg(@station)

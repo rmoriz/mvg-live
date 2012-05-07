@@ -1,13 +1,16 @@
 require 'rubygems'
+require 'simplecov'
 require 'minitest/spec'
 require 'minitest/autorun'
-#require 'minitest/reporters'
-require 'mvg/live'
+require 'mocha'
 require 'vcr'
 require 'factory_girl'
 
-#MiniTest::Unit.runner = MiniTest::SuiteRunner.new
-#MiniTest::Unit.runner.reporters << MiniTest::Reporters::ProgressReporter.new
+SimpleCov.start
+SimpleCov.command_name 'test'
+
+require 'mvg/live'
+
 
 class MiniTest::Spec
   include Factory::Syntax::Methods

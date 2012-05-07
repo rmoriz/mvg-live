@@ -71,6 +71,8 @@ describe MVG::Live do
       mvglive.retrieve
       mvglive.response_obj.must_be_instance_of Faraday::Response
     end
+
+    it "should apply some station hacks"
   end
 
   describe "Parser" do
@@ -97,12 +99,12 @@ describe MVG::Live do
 
         it "should have the correct order " do
           @mvglive.result_display.map{ |e| [ e[:line], e[:destination], e[:minutes] ]}.must_equal [
-                                                                                                      ["N16", "Effnerplatz", 8],
-                                                                                                      ["N16", "Amalienburgstraße", 23],
-                                                                                                      ["N16", "Effnerplatz", 38],
-                                                                                                      ["N16", "Amalienburgstraße", 53],
-                                                                                                      ["S8", "Flughafen München", 17]
-                                                                                                  ]
+            ["N16", "Effnerplatz", 8],
+            ["N16", "Amalienburgstraße", 23],
+            ["N16", "Effnerplatz", 38],
+            ["N16", "Amalienburgstraße", 53],
+            ["S8", "Flughafen München", 17]
+          ]
         end
       end
 
@@ -114,13 +116,13 @@ describe MVG::Live do
 
         it "should have the correct order" do
           @mvglive.result_sorted.map{ |e| [ e[:line], e[:destination], e[:minutes] ]}.must_equal [
-                                                                                                    ["N16", "Effnerplatz", 5],
-                                                                                                    ["S8", "Flughafen München", 13],
-                                                                                                    ["N16", "Amalienburgstraße", 19],
-                                                                                                    ["S1", "Flughafen München", 25],
-                                                                                                    ["N16", "Effnerplatz", 34],
-                                                                                                    ["N16", "Amalienburgstraße", 49]
-                                                                                                  ]
+            ["N16", "Effnerplatz", 5],
+            ["S8", "Flughafen München", 13],
+            ["N16", "Amalienburgstraße", 19],
+            ["S1", "Flughafen München", 25],
+            ["N16", "Effnerplatz", 34],
+            ["N16", "Amalienburgstraße", 49]
+          ]
         end
       end
 
@@ -133,10 +135,29 @@ describe MVG::Live do
     end
   end
 
+  describe "CLI" do
+    it "should apply convenience hacks on station names" do
+      MVG::Live.any_instance.expects(:cli_station_hacks_for).with('Stachus').returns('Karlsplatz (Stachus)')
+      mvglive = MVG::Live.fetch_to_display 'Stachus', { :load_user_defaults => true, :cli => true }
+    end
+
+    it "should apply the following convenince hacks" do
+      hacks = [
+        ['Stachus',         'Karlsplatz (Stachus)'],
+        ['Karlsplatz',      'Karlsplatz (Stachus)'],
+        ['Moosach Bf',      'Moosach Bf.'],
+        ['Moosach Bahnhof', 'Moosach Bf.']
+      ]
+
+      hacks.each do |hack|
+        mvglive = MVG::Live.new
+        mvglive.cli_station_hacks_for(hack[0]).must_equal hack[1]
+      end
+    end
+  end
+
   describe "Output" do
     describe "JSON" do
-
-
     end
   end
 
