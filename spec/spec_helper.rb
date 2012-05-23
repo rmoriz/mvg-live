@@ -13,7 +13,7 @@ require 'mvg/live'
 
 
 class MiniTest::Spec
-  include Factory::Syntax::Methods
+  include FactoryGirl::Syntax::Methods
   alias :method_name :__name__ if defined? :__name__
 end
 

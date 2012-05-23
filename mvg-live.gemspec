@@ -24,8 +24,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake'
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'minitest-reporters'
-  s.add_development_dependency 'factory_girl', '~> 2.1.0'
-  s.add_development_dependency 'vcr', '~> 2.0.0'
+  s.add_development_dependency 'factory_girl', '~> 3.3.0'
+  s.add_development_dependency 'vcr', '~> 2.1.1'
   s.add_development_dependency 'growl'
   s.add_development_dependency 'guard'
   s.add_development_dependency 'guard-minitest'
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
 
 
   s.add_runtime_dependency 'activemodel',   '~> 3.2.2'
-  s.add_runtime_dependency 'faraday',       '~> 0.7.6'
+  s.add_runtime_dependency 'faraday',       '~> 0.8.0'
   s.add_runtime_dependency 'nokogiri',      '~> 1.5.2'
   s.add_runtime_dependency 'json'
 
