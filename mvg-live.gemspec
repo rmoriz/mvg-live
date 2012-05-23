@@ -18,8 +18,11 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  #s.required_ruby_version = '>= 1.9.3'
-  s.required_ruby_version = '>= 1.8.7'
+  s.required_ruby_version = '>= 1.9.2'
+
+  if RUBY_PLATFORM == 'java'
+    s.add_runtime_dependency 'jruby-openssl'
+  end
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'minitest'
@@ -33,8 +36,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'mocha', '~> 0.11.4'
   s.add_development_dependency 'simplecov'
 
-
-  s.add_runtime_dependency 'activemodel',   '~> 3.2.2'
+  s.add_runtime_dependency 'activemodel',   '~> 3.2.3'
   s.add_runtime_dependency 'faraday',       '~> 0.8.0'
   s.add_runtime_dependency 'nokogiri',      '~> 1.5.2'
   s.add_runtime_dependency 'json'

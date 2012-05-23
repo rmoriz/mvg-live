@@ -12,6 +12,11 @@ A ruby client and CLI for mvg-live.de the real-time interface for Munich's publi
 
     gem install mvg-live
 
+If you still use Ruby 1.8.7 or JRuby in Ruby 1.8.7-mode, please use the
+old version as legacy support was dropped with the 1.0.0 release:
+
+    gem install mvg-live --version 0.0.1
+
 
 ## Ruby
 
