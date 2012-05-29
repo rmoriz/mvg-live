@@ -151,7 +151,7 @@ Use on your own risk.
 
 ## License
 
-see LICENSE file (BSD)
+see LICENSE file (MIT)
 
 ## Created by
 
