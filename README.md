@@ -147,7 +147,7 @@ see "specs/"-directory
 ## Disclaimer
 
 This project is not related, acknowledged, sponsored... by MVG or SWM.
-Use on your own risk.
+Use at your own risk.
 
 ## License
 
