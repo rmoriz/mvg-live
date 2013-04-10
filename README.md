@@ -2,9 +2,8 @@
 
 A ruby client and CLI for mvg-live.de the real-time interface for Munich's public transportation service.
 
+[![Gem Version](https://badge.fury.io/rb/mvg-live.png)](http://badge.fury.io/rb/mvg-live)
 [![Build Status](https://secure.travis-ci.org/rmoriz/mvg-live.png?branch=master)](http://travis-ci.org/rmoriz/mvg-live)
-
-
 [![Flattr](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=flattr&url=https://github.com/rmoriz/mvg-live&title=mvg-live%20rubygem&description=mvg-live%20rubygem&language=de_DE&tags=fahrplan,mvg,swm,ruby,code,u-bahn,s-bahn,tram,muenchen&category=software)
   
   
@@ -155,7 +154,11 @@ see LICENSE file (MIT)
 
 ## Copyright
 
+Copyright
+---------
+
 Copyright © 2013 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
 
 [![LinkedIn](http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png)](http://www.linkedin.com/in/rmoriz)
+[![Twitter](http://i.imgur.com/1kYFHlu.png)](https://twitter.com/rmoriz)
 
