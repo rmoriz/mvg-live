@@ -11,10 +11,19 @@ A ruby client and CLI for mvg-live.de the real-time interface for Munich's publi
 
     gem install mvg-live
 
-If you still use Ruby 1.8.7 or JRuby in Ruby 1.8.7-mode, please use the
-old version as legacy support was dropped with the 1.0.0 release:
+#### If you want to use this fork
 
-    gem install mvg-live --version 0.0.1
+```
+git clone https://github.com/greenify/mvg-live/
+gem build gem build mvg-live.gemspec
+gem install mvg-live-*.gem
+```
+If cli commands does not work: (otherwise skip)
+
+you need to put the user gem bin
+* ```/home/<user>/.gem/ruby/<version>/bin```
+* github 'bin' folder in your PATH
+* Another option is to install the gem as root.
 
 
 ## Ruby
