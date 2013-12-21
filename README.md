@@ -103,7 +103,7 @@ The first available file will be loaded:
 
 Example .mvg file:
 
-     {"default_transports":["u"],"default_station":"Hauptbahnhof", "color": true}
+     {"default_transports":["u"],"default_station":"Hauptbahnhof", "color": true, "no_header" : true}
     
 This limits the transports to U-Bahn and uses "Hauptbahnhof" as default station:
 

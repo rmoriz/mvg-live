@@ -38,10 +38,14 @@ module MVG
       def to_display
         txt = ""
 
-        if @using_config_file
-          txt += "=[ " + sprintf("%42s", @using_config_file) + " ]=\n"
+        if @header
+          if @using_config_file
+            txt += "=[ " + sprintf("%42s", @using_config_file) + " ]=\n"
+          else
+            txt += "=" * 48 + "\n"
+          end
         else
-          txt += "=" * 48 + "\n"
+            txt += "\n"
         end
 
         if @station_unknown
@@ -149,6 +153,8 @@ module MVG
             else
               @color = false
             end
+            @header = true
+            @header = false if data['no_header']
             @transports = data['default_transports'].map(&:downcase).map(&:to_sym) if data['default_transports']
             @using_config_file = file
             break
