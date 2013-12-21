@@ -18,11 +18,10 @@ git clone https://github.com/greenify/mvg-live/
 gem build gem build mvg-live.gemspec
 gem install mvg-live-*.gem
 ```
-If cli commands does not work: (otherwise skip)
+If cli commands does not work (otherwise skip):  
 
-you need to put the user gem bin
-* ```/home/<user>/.gem/ruby/<version>/bin```
-* github 'bin' folder in your PATH
+* add ```/home/<user>/.gem/ruby/<version>/bin``` to  your PATH
+* add the github 'bin' folder to your PATH
 * Another option is to install the gem as root.
 
 
@@ -51,7 +50,7 @@ Returns a human readable listing of the next depatures
 example output:
 
 
-<img src="http://i.imgur.com/rMk2Lpj.png">
+<img src="http://i.imgur.com/rMk2Lpj.png">  
 <img src="http://i.imgur.com/rO6Fz.jpg">
 
     ================================================
