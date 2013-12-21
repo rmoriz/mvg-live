@@ -155,6 +155,7 @@ see LICENSE file (MIT)
 
 ## Contributors
 
+rmoriz
 greenify
 
 ## Copyright
