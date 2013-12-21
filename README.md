@@ -42,7 +42,7 @@ Returns a human readable listing of the next depatures
 example output:
 
 
-<img src="http://i.imgur.com/LLGYs.jpg">
+<img src="http://i.imgur.com/rMk2Lpj.png">
 <img src="http://i.imgur.com/rO6Fz.jpg">
 
     ================================================
@@ -79,6 +79,7 @@ displays alternates/suggestions in case of unclear/invalid station name:
      - Am Münchner Tor
      - Sendlinger Tor
 
+If you don't like the colorized output, you can switch it off via the global settings.
 
 ### mvg_json
 
@@ -102,7 +103,7 @@ The first available file will be loaded:
 
 Example .mvg file:
 
-     {"default_transports":["u"],"default_station":"Hauptbahnhof"}
+     {"default_transports":["u"],"default_station":"Hauptbahnhof", "color": true}
     
 This limits the transports to U-Bahn and uses "Hauptbahnhof" as default station:
 
@@ -151,6 +152,10 @@ Use at your own risk.
 ## License
 
 see LICENSE file (MIT)
+
+## Contributors
+
+greenify
 
 ## Copyright
 
