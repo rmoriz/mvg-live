@@ -162,3 +162,7 @@ Copyright © 2013 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.
 [![LinkedIn](http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png)](http://www.linkedin.com/in/rmoriz)
 [![Twitter](http://i.imgur.com/1kYFHlu.png)](https://twitter.com/rmoriz)
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rmoriz/mvg-live/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
