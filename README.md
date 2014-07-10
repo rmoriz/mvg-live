@@ -15,7 +15,7 @@ A ruby client and CLI for mvg-live.de the real-time interface for Munich's publi
 
 ```
 git clone https://github.com/greenify/mvg-live/
-gem build gem build mvg-live.gemspec
+gem build mvg-live.gemspec
 gem install mvg-live-*.gem
 ```
 If cli commands does not work (otherwise skip):  
