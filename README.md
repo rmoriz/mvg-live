@@ -11,10 +11,18 @@ A ruby client and CLI for mvg-live.de the real-time interface for Munich's publi
 
     gem install mvg-live
 
-If you still use Ruby 1.8.7 or JRuby in Ruby 1.8.7-mode, please use the
-old version as legacy support was dropped with the 1.0.0 release:
+#### If you want to use this fork
 
-    gem install mvg-live --version 0.0.1
+```
+git clone https://github.com/greenify/mvg-live/
+gem build mvg-live.gemspec
+gem install mvg-live-*.gem
+```
+If cli commands does not work (otherwise skip):  
+
+* add ```/home/<user>/.gem/ruby/<version>/bin``` to  your PATH
+* add the github 'bin' folder to your PATH
+* Another option is to install the gem as root.
 
 
 ## Ruby
@@ -42,7 +50,7 @@ Returns a human readable listing of the next depatures
 example output:
 
 
-<img src="http://i.imgur.com/LLGYs.jpg">
+<img src="http://i.imgur.com/rMk2Lpj.png">  
 <img src="http://i.imgur.com/rO6Fz.jpg">
 
     ================================================
@@ -79,6 +87,7 @@ displays alternates/suggestions in case of unclear/invalid station name:
      - Am Münchner Tor
      - Sendlinger Tor
 
+If you don't like the colorized output, you can switch it off via the global settings.
 
 ### mvg_json
 
@@ -102,7 +111,7 @@ The first available file will be loaded:
 
 Example .mvg file:
 
-     {"default_transports":["u"],"default_station":"Hauptbahnhof"}
+     {"default_transports":["u"],"default_station":"Hauptbahnhof", "color": true, "no_header" : true}
     
 This limits the transports to U-Bahn and uses "Hauptbahnhof" as default station:
 
@@ -152,15 +161,15 @@ Use at your own risk.
 
 see LICENSE file (MIT)
 
-## Copyright
+## Contributors
 
-Copyright
----------
+rmoriz
+greenify
+
+## Copyright
 
 Copyright © 2013 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
 
-[![LinkedIn](http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png)](http://www.linkedin.com/in/rmoriz)
-[![Twitter](http://i.imgur.com/1kYFHlu.png)](https://twitter.com/rmoriz)
 
 
 

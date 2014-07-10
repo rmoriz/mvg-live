@@ -3,6 +3,6 @@
 require 'rubygems'
 require 'mvg/live'
 
-puts MVG::Live.fetch_to_display ARGV.join(" "), { :load_user_defaults => true, :cli => true }
+puts MVG::Live.fetch_to_display ARGV.join(" "), { :load_user_defaults => true, :cli => true, :color =>true, :header => true }
 
 
