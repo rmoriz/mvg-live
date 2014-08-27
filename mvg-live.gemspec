@@ -33,10 +33,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard'
   s.add_development_dependency 'guard-minitest'
   s.add_development_dependency 'pry'
-  s.add_development_dependency 'mocha', '~> 0.12.7'
+  s.add_development_dependency 'mocha', '~> 1.1.0'
   s.add_development_dependency 'simplecov'
 
-  s.add_runtime_dependency 'activemodel',   '~> 3.2.8'
+  s.add_runtime_dependency 'activemodel',   '~> 4.1.1'
   s.add_runtime_dependency 'faraday',       '~> 0.8.4'
   s.add_runtime_dependency 'nokogiri',      '~> 1.5.5'
   s.add_runtime_dependency 'json'

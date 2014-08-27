@@ -5,7 +5,7 @@ describe MVG::Live do
 
   before do
     # https://github.com/myronmarston/vcr/wiki/Usage-with-MiniTest
-    VCR.insert_cassette __name__
+    VCR.insert_cassette name
   end
 
   after do
@@ -137,7 +137,7 @@ describe MVG::Live do
 
   describe "CLI" do
     it "should apply convenience hacks on station names" do
-      MVG::Live.any_instance.expects(:cli_station_hacks_for).with('Stachus').returns('Karlsplatz (Stachus)')
+      MVG::Live.fetch_to_display('Stachus', { :load_user_defaults => true, :cli => true }).include?("Station unknown!") .must_equal false
       mvglive = MVG::Live.fetch_to_display 'Stachus', { :load_user_defaults => true, :cli => true }
     end
 
