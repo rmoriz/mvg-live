@@ -56,7 +56,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    mocha (0.12.10)
+    mocha (1.1.0)
       metaclass (~> 0.0.1)
     multi_json (1.10.1)
     multipart-post (1.2.0)
@@ -93,7 +93,7 @@ DEPENDENCIES
   guard-minitest
   minitest
   minitest-reporters
-  mocha (~> 0.12.7)
+  mocha (~> 1.1.0)
   mvg-live!
   pry
   rake

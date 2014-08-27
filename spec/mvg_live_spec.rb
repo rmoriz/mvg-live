@@ -5,7 +5,7 @@ describe MVG::Live do
 
   before do
     # https://github.com/myronmarston/vcr/wiki/Usage-with-MiniTest
-    VCR.insert_cassette __name__
+    VCR.insert_cassette name
   end
 
   after do

@@ -14,7 +14,7 @@ require 'mvg/live'
 
 class MiniTest::Spec
   include FactoryGirl::Syntax::Methods
-  alias :method_name :__name__ if defined? :__name__
+  alias :method_name :name if defined? :name
 end
 
 FactoryGirl.find_definitions
