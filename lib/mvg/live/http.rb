@@ -3,9 +3,8 @@ require 'faraday'
 module MVG
   class Live
     module HTTP
-
       def connection
-        @conn ||= Faraday.new(:url => "#{@schema}://#{@host}" ) do |builder|
+        @conn ||= Faraday.new(url: "#{@schema}://#{@host}") do |builder|
           builder.use @faraday_adapter
           builder.response :logger if @faraday_logger
         end
@@ -18,7 +17,7 @@ module MVG
 
         res = connection.get do |req|
           req.url @path, build_request_params
-          req.headers['Content-Type'] = "text/html; charset=UTF-8"
+          req.headers['Content-Type'] = 'text/html; charset=UTF-8'
         end
         @response_obj = res
       end
@@ -28,7 +27,7 @@ module MVG
         params[:haltestelle] = station_to_mvg(@station)
 
         transports.each do |available_transport|
-          params[transport_to_mvg(available_transport)] = "checked" if @transports.include? available_transport
+          params[transport_to_mvg(available_transport)] = 'checked' if @transports.include? available_transport
         end
         params
       end
@@ -46,9 +45,9 @@ module MVG
       def transport_to_mvg(transport)
         case transport
         when :u
-          "ubahn"
+          'ubahn'
         when :s
-          "sbahn"
+          'sbahn'
         else
           transport
         end

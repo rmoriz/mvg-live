@@ -14,10 +14,10 @@ module MVG
     include MVG::Live::Parser
     include MVG::Live::CLI
 
-    ALL_TRANSPORTS = [ :u, :bus, :tram, :s ]
+    ALL_TRANSPORTS = [:u, :bus, :tram, :s].freeze
 
-    validates :station, :presence => true
-    validates :transports, :presence => true
+    validates :station, presence: true
+    validates :transports, presence: true
     validate  :available_transports
 
     attr_accessor :station
@@ -36,11 +36,9 @@ module MVG
       @station    = args.shift
       opts        = args.shift || {}
 
-      if opts[:load_user_defaults]
-        load_user_defaults
-      end
+      load_user_defaults if opts[:load_user_defaults]
 
-      @transports = opts[:transports] || @transports || ALL_TRANSPORTS
+      @transports = opts[:transports] || ALL_TRANSPORTS
       @schema     = opts[:schema]     || 'http'
       @host       = opts[:host]       || 'www.mvg-live.de'
       @path       = opts[:path]       || '/ims/dfiStaticAuswahl.svc'
@@ -49,7 +47,7 @@ module MVG
 
       @faraday_adapter = opts[:faraday_adapter] || Faraday::Adapter::NetHttp
       @faraday_logger  = opts[:faraday_logger]
-      @server_time = "??:??"
+      @server_time = '??:??'
       self
     end
 
@@ -58,16 +56,15 @@ module MVG
         retrieve
         parse
       else
-        raise ArgumentError, self.errors.full_messages.join("\n")
+        raise ArgumentError, errors.full_messages.join("\n")
       end
     end
 
     def available_transports
       unsupported_transports = @transports.to_a - ALL_TRANSPORTS
       if unsupported_transports.presence
-        errors.add :transports, "transport(s) #{unsupported_transports.to_s} is/are not available"
+        errors.add :transports, "transport(s) #{unsupported_transports} is/are not available"
       end
     end
-
   end
 end

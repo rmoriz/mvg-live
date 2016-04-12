@@ -3,6 +3,4 @@
 require 'rubygems'
 require 'mvg/live'
 
-puts MVG::Live.fetch_to_json ARGV.join(" "), { :load_user_defaults => true, :cli => true }
-
-
+puts MVG::Live.fetch_to_json ARGV.join(' '), load_user_defaults: true, cli: true

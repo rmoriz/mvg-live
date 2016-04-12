@@ -23,7 +23,6 @@ module MVG
         base.extend(ClassMethods)
       end
 
-
       def fetch_to_display
         fetch
         to_display
@@ -35,25 +34,25 @@ module MVG
       end
 
       def to_display
-        txt = ""
+        txt = ''
 
-        if @using_config_file
-          txt += "=[ " + sprintf("%42s", @using_config_file) + " ]=\n"
-        else
-          txt += "=" * 48 + "\n"
-        end
+        txt += if @using_config_file
+                 '=[ ' + sprintf('%42s', @using_config_file) + " ]=\n"
+               else
+                 '=' * 48 + "\n"
+               end
 
         if @station_unknown
           txt += '   /!\ Station unknown!  Did you mean...? /!\   ' + "\n"
-          txt += "=" * 48 + "\n"
+          txt += '=' * 48 + "\n"
 
           @station_alternates.each do |a|
             txt += " - #{a}\n"
           end
 
         else
-          txt += "#{@station}: #{@transports.map(&:to_s).map(&:capitalize).join(", ")}\n"
-          txt += "=" * 38 + "[ #{@server_time} ]=\n"
+          txt += "#{@station}: #{@transports.map(&:to_s).map(&:capitalize).join(', ')}\n"
+          txt += '=' * 38 + "[ #{@server_time} ]=\n"
 
           @result_sorted.each do |e|
             txt += sprintf "%-4s| %-30s|%3d Minuten\n", e[:line], e[:destination], e[:minutes]
@@ -88,17 +87,16 @@ module MVG
         ]
 
         file_locations.each do |file|
-          if file && File.exists?(file)
-            data = JSON.parse File.read(file)
+          next unless file && File.exist?(file)
+          data = JSON.parse File.read(file)
 
-            if @station.empty? && data['default_station']
-              @station = data['default_station']
-            end
-
-            @transports = data['default_transports'].map(&:downcase).map(&:to_sym) if data['default_transports']
-            @using_config_file = file
-            break
+          if @station.empty? && data['default_station']
+            @station = data['default_station']
           end
+
+          @transports = data['default_transports'].map(&:downcase).map(&:to_sym) if data['default_transports']
+          @using_config_file = file
+          break
         end
       end
 
@@ -112,7 +110,6 @@ module MVG
           station
         end
       end
-
     end
   end
 end

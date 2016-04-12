@@ -3,14 +3,13 @@ require 'nokogiri'
 module MVG
   class Live
     module Parser
-
-      def parse(args = {})
+      def parse(_args = {})
         return unless @response_obj
 
         @doc = Nokogiri::HTML(@response_obj.body)
 
         # <table class="departureTable departureView">
-        #...
+        # ...
         # <tr class="rowOdd">
         #   <td class="lineColumn">N16</td>
         #   <td class="stationColumn">
