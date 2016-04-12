@@ -2,8 +2,15 @@
 
 A ruby client and CLI for mvg-live.de the real-time interface for Munich's public transportation service.
 
-[![Gem Version](https://badge.fury.io/rb/mvg-live.png)](http://badge.fury.io/rb/mvg-live)
-[![Build Status](https://secure.travis-ci.org/rmoriz/mvg-live.png?branch=master)](http://travis-ci.org/rmoriz/mvg-live)
+
+[![Build](https://img.shields.io/travis-ci/rmoriz/mvg-live.svg?style=flat-square)](https://travis-ci.org/rmoriz/mvg-live)
+[![Dependencies](https://img.shields.io/gemnasium/rmoriz/mvg-live.svg?style=flat-square)](https://gemnasium.com/rmoriz/mvg-live)
+[![Downloads](https://img.shields.io/gem/dtv/mvg-live.svg?style=flat-square)](https://rubygems.org/gems/mvg-live)
+[![Tags](https://img.shields.io/github/tag/rmoriz/mvg-live.svg?style=flat-square)](https://github.com/rmoriz/mvg-live/tags)
+[![Issues](https://img.shields.io/github/issues/rmoriz/mvg-live.svg?style=flat-square)](https://github.com/rmoriz/mvg-live/issues)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/gem/v/mvg-live.svg?style=flat-square)](https://rubygems.org/gems/mvg-live)
+
 [![Flattr](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=flattr&url=https://github.com/rmoriz/mvg-live&title=mvg-live%20rubygem&description=mvg-live%20rubygem&language=de_DE&tags=fahrplan,mvg,swm,ruby,code,u-bahn,s-bahn,tram,muenchen&category=software)
   
   
