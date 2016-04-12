@@ -46,7 +46,7 @@ module MVG
 
         unless results.empty?
           @result_display = results
-          @result_sorted  = results.sort_by { |i| i[:minutes] }
+          @result_sorted  = results.sort_by.with_index { |i,| [i[:minutes], i[:line], i[:destination]] }
           @result_sorted
         else
           @station_unknown = true

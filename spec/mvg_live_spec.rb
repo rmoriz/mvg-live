@@ -101,30 +101,30 @@ describe MVG::Live, vcr: { record: :new_episodes } do
           @mvglive.result_display.size.must_equal 20
         end
 
-        it 'should have the correct order ' do
+        it 'should display the correct order' do
           @mvglive.result_display.map do |e|
             [e[:line], e[:destination], e[:minutes]]
           end.must_equal [
-            ['17', "Schwanseestraße", 2],
-            ['16', 'St. Emmeram', 2],
-            ['17', "Amalienburgstraße", 4],
-            ['16', 'St. Emmeram', 7],
-            ['16', 'Romanplatz', 10],
-            ['17', "Schwanseestraße", 12],
-            ['17', "Amalienburgstraße", 15],
-            ['S2', 'Erding', 1],
-            ['S2', "Altomünster", 2],
-            ['S2', 'Petershausen(Obb)', 2],
-            ['S8', "München Flughafen Terminal", 4],
-            ['S6', 'Tutzing', 4],
-            ['S7', 'Wolfratshausen', 6],
-            ['S1', "München Ost", 7],
-            ['S1', "München Ost", 7],
-            ['S4', 'Grafing Bahnhof', 9],
-            ['S3', 'Mammendorf', 10],
-            ['S3', 'Holzkirchen', 12],
-            ['S4', 'Geltendorf', 14],
-            ['S1', "München Flughafen Terminal", 16]
+            ['17', "Schwanseestraße", 0],
+            ['17', "Amalienburgstraße", 0],
+            ['16', 'St. Emmeram', 3],
+            ['16', 'Romanplatz', 7],
+            ['17', "Schwanseestraße", 7],
+            ['17', "Amalienburgstraße", 11],
+            ['16', 'St. Emmeram', 13],
+            ['S4', 'Grafrath', 0],
+            ['S1', "München Flughafen Terminal", 2],
+            ['S7', "Kreuzstraße", 3],
+            ['S8', 'Herrsching', 4],
+            ['S6', "München Ost", 6],
+            ['S2', 'Erding', 7],
+            ['S2', 'Petershausen(Obb)', 8],
+            ['S8', "München Flughafen Terminal", 10],
+            ['S6', 'Starnberg', 10],
+            ['S7', "Höllriegelskreuth", 12],
+            ['S1', "München Ost", 13],
+            ['S1', "München Ost", 13],
+            ['S4', 'Grafing Bahnhof', 15]
           ]
         end
       end
@@ -138,10 +138,10 @@ describe MVG::Live, vcr: { record: :new_episodes } do
         it 'should have the correct order' do
           @mvglive.result_sorted.map { |e| [e[:line], e[:destination], e[:minutes]] }.must_equal [
             ['S2', 'Erding', 1],
-            ['S2', 'Petershausen(Obb)', 2],
             ['16', 'St. Emmeram', 2],
             ['17', "Schwanseestraße", 2],
             ['S2', "Altomünster", 2],
+            ['S2', 'Petershausen(Obb)', 2],
             ['17', "Amalienburgstraße", 4],
             ['S6', 'Tutzing', 4],
             ['S8', "München Flughafen Terminal", 4],
