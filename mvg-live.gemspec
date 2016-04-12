@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'mocha', '~> 1.1'
   s.add_development_dependency 'simplecov'
 
+  s.add_runtime_dependency 'activesupport', '~> 4.2'
   s.add_runtime_dependency 'activemodel',   '~> 4.2'
   s.add_runtime_dependency 'faraday',       '~> 0.9'
   s.add_runtime_dependency 'nokogiri',      '~> 1.6'

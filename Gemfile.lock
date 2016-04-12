@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    mvg-live (2.0.0)
+    mvg-live (2.1.0)
       activemodel (~> 4.2)
+      activesupport (~> 4.2)
       faraday (~> 0.9)
       multi_json
       nokogiri (~> 1.6)
