@@ -11,10 +11,7 @@ A ruby client and CLI for mvg-live.de the real-time interface for Munich's publi
 
     gem install mvg-live
 
-If you still use Ruby 1.8.7 or JRuby in Ruby 1.8.7-mode, please use the
-old version as legacy support was dropped with the 1.0.0 release:
-
-    gem install mvg-live --version 0.0.1
+Please use Ruby 2.2.x or greater.
 
 
 ## Ruby
@@ -157,12 +154,9 @@ see LICENSE file (MIT)
 Copyright
 ---------
 
-Copyright © 2013 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
+Copyright © 2016 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
 
 [![LinkedIn](http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png)](http://www.linkedin.com/in/rmoriz)
 [![Twitter](http://i.imgur.com/1kYFHlu.png)](https://twitter.com/rmoriz)
 
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rmoriz/mvg-live/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
