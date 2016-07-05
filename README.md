@@ -14,9 +14,20 @@ A ruby client and CLI for mvg-live.de the real-time interface for Munich's publi
 [![Flattr](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=flattr&url=https://github.com/rmoriz/mvg-live&title=mvg-live%20rubygem&description=mvg-live%20rubygem&language=de_DE&tags=fahrplan,mvg,swm,ruby,code,u-bahn,s-bahn,tram,muenchen&category=software)
   
   
-## Installation
+## Installation 
 
-    gem install mvg-live
+
+### Docker
+
+```shell
+docker pull rmoriz/mvg-live:latest
+docker run -it --rm rmoriz/mvg-live Marienplatz
+```
+### Rubygem
+
+```shell
+gem install mvg-live
+```
 
 Please use Ruby 2.2.x or greater.
 
