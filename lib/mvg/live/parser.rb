@@ -44,17 +44,17 @@ module MVG
           results << result
         end
 
-        unless results.empty?
-          @result_display = results
-          @result_sorted  = results.sort_by.with_index { |i,| [i[:minutes], i[:line], i[:destination]] }
-          @result_sorted
-        else
+        if results.empty?
           @station_unknown = true
           @station_alternates = []
 
           @doc.xpath('//table[@class="departureTable header"]//li/a/text()').each do |alt|
             @station_alternates << to_utf8(alt.to_s.strip)
           end
+        else
+          @result_display = results
+          @result_sorted  = results.sort_by.with_index { |i,| [i[:minutes], i[:line], i[:destination]] }
+          @result_sorted
         end
       end
     end
