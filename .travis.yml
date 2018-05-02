@@ -1,9 +1,7 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.2.4
-  - 2.3.0
-  - jruby-19mode
+  - 2.5
+  - 2.4
   - ruby-head
-  - jruby-head
 script: bundle exec rake test
