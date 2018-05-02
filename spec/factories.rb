@@ -1,17 +1,15 @@
-# encoding: UTF-8
-
-FactoryGirl.define do
+FactoryBot.define do
   factory :live do
   end
 
   factory :westfriedhof, class: MVG::Live do
     station 'Westfriedhof'
-    transports [:u, :tram, :bus]
+    transports %i[u tram bus]
   end
 
   factory :hackerbruecke, class: MVG::Live do
-    station "Hackerbrücke"
-    transports [:tram, :s]
+    station 'Hackerbrücke'
+    transports %i[tram s]
   end
 
   factory :goethe_institut, class: MVG::Live do
@@ -21,6 +19,6 @@ FactoryGirl.define do
 
   factory :leonrodplatz, class: MVG::Live do
     station 'Leonrodplatz'
-    transports [:tram, :bus]
+    transports %i[tram bus]
   end
 end

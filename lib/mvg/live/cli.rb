@@ -37,7 +37,7 @@ module MVG
         txt = ''
 
         txt += if @using_config_file
-                 '=[ ' + sprintf('%42s', @using_config_file) + " ]=\n"
+                 '=[ ' + format('%42s', @using_config_file) + " ]=\n"
                else
                  '=' * 48 + "\n"
                end
@@ -55,7 +55,7 @@ module MVG
           txt += '=' * 38 + "[ #{@server_time} ]=\n"
 
           @result_sorted.each do |e|
-            txt += sprintf "%-4s| %-30s|%3d Minuten\n", e[:line], e[:destination], e[:minutes]
+            txt += format "%-4s| %-30s|%3d Minuten\n", e[:line], e[:destination], e[:minutes]
           end
         end
 

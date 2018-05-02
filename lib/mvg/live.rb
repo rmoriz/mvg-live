@@ -1,4 +1,4 @@
-# encoding: UTF-8
+
 require 'active_model'
 require 'mvg/live/version'
 require 'mvg/live/encoding'
@@ -14,7 +14,7 @@ module MVG
     include MVG::Live::Parser
     include MVG::Live::CLI
 
-    ALL_TRANSPORTS = [:u, :bus, :tram, :s].freeze
+    ALL_TRANSPORTS = %i[u bus tram s].freeze
 
     validates :station, presence: true
     validates :transports, presence: true

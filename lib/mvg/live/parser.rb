@@ -53,7 +53,7 @@ module MVG
           end
         else
           @result_display = results
-          @result_sorted  = results.sort_by.with_index { |i,| [i[:minutes], i[:line], i[:destination]] }
+          @result_sorted  = results.sort_by { |i,| [i[:minutes], i[:line], i[:destination]] }
           @result_sorted
         end
       end

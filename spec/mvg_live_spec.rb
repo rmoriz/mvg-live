@@ -1,4 +1,4 @@
-# encoding: UTF-8
+
 require 'spec_helper'
 
 describe MVG::Live, vcr: { record: :new_episodes } do
@@ -24,7 +24,7 @@ describe MVG::Live, vcr: { record: :new_episodes } do
     end
 
     it 'can be created for a specific transports' do
-      transports = [:u, :bus, :tram, :s]
+      transports = %i[u bus tram s]
       mvglive = MVG::Live.new 'Westfriedhof', transports: transports
       mvglive.transports.must_be_same_as transports
     end
@@ -43,7 +43,7 @@ describe MVG::Live, vcr: { record: :new_episodes } do
     end
 
     it 'should not be valid with invalid transports' do
-      transports = [:transrapid, :express_s_bahn_zum_flughafen]
+      transports = %i[transrapid express_s_bahn_zum_flughafen]
       mvglive = MVG::Live.new 'Vom äh Hauptbahnof äh abfliegen', transports: transports
       mvglive.valid?.must_equal false
       mvglive.errors.keys.must_include :transports
@@ -64,7 +64,7 @@ describe MVG::Live, vcr: { record: :new_episodes } do
     it 'should build the right query' do
       mvglive = build(:westfriedhof)
       mvglive.retrieve.env[:url].to_s
-                                .must_equal 'http://www.mvg-live.de' \
+             .must_equal 'http://www.mvg-live.de' \
                     '/ims/dfiStaticAuswahl.svc' \
                     '?bus=checked&haltestelle=Westfriedhof' \
                     '&tram=checked&ubahn=checked'
@@ -105,25 +105,25 @@ describe MVG::Live, vcr: { record: :new_episodes } do
           @mvglive.result_display.map do |e|
             [e[:line], e[:destination], e[:minutes]]
           end.must_equal [
-            ['17', "Schwanseestraße", 0],
-            ['17', "Amalienburgstraße", 0],
+            ['17', 'Schwanseestraße', 0],
+            ['17', 'Amalienburgstraße', 0],
             ['16', 'St. Emmeram', 3],
             ['16', 'Romanplatz', 7],
-            ['17', "Schwanseestraße", 7],
-            ['17', "Amalienburgstraße", 11],
+            ['17', 'Schwanseestraße', 7],
+            ['17', 'Amalienburgstraße', 11],
             ['16', 'St. Emmeram', 13],
             ['S4', 'Grafrath', 0],
-            ['S1', "München Flughafen Terminal", 2],
-            ['S7', "Kreuzstraße", 3],
+            ['S1', 'München Flughafen Terminal', 2],
+            ['S7', 'Kreuzstraße', 3],
             ['S8', 'Herrsching', 4],
-            ['S6', "München Ost", 6],
+            ['S6', 'München Ost', 6],
             ['S2', 'Erding', 7],
             ['S2', 'Petershausen(Obb)', 8],
-            ['S8', "München Flughafen Terminal", 10],
+            ['S8', 'München Flughafen Terminal', 10],
             ['S6', 'Starnberg', 10],
-            ['S7', "Höllriegelskreuth", 12],
-            ['S1', "München Ost", 13],
-            ['S1', "München Ost", 13],
+            ['S7', 'Höllriegelskreuth', 12],
+            ['S1', 'München Ost', 13],
+            ['S1', 'München Ost', 13],
             ['S4', 'Grafing Bahnhof', 15]
           ]
         end
@@ -139,24 +139,24 @@ describe MVG::Live, vcr: { record: :new_episodes } do
           @mvglive.result_sorted.map { |e| [e[:line], e[:destination], e[:minutes]] }.must_equal [
             ['S2', 'Erding', 1],
             ['16', 'St. Emmeram', 2],
-            ['17', "Schwanseestraße", 2],
-            ['S2', "Altomünster", 2],
+            ['17', 'Schwanseestraße', 2],
+            ['S2', 'Altomünster', 2],
             ['S2', 'Petershausen(Obb)', 2],
-            ['17', "Amalienburgstraße", 4],
+            ['17', 'Amalienburgstraße', 4],
             ['S6', 'Tutzing', 4],
-            ['S8', "München Flughafen Terminal", 4],
+            ['S8', 'München Flughafen Terminal', 4],
             ['S7', 'Wolfratshausen', 6],
             ['16', 'St. Emmeram', 7],
-            ['S1', "München Ost", 7],
-            ['S1', "München Ost", 7],
+            ['S1', 'München Ost', 7],
+            ['S1', 'München Ost', 7],
             ['S4', 'Grafing Bahnhof', 9],
             ['16', 'Romanplatz', 10],
             ['S3', 'Mammendorf', 10],
-            ['17', "Schwanseestraße", 12],
+            ['17', 'Schwanseestraße', 12],
             ['S3', 'Holzkirchen', 12],
             ['S4', 'Geltendorf', 14],
-            ['17', "Amalienburgstraße", 15],
-            ['S1', "München Flughafen Terminal", 16]
+            ['17', 'Amalienburgstraße', 15],
+            ['S1', 'München Flughafen Terminal', 16]
           ]
         end
       end
