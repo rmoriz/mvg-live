@@ -3,7 +3,7 @@ require 'simplecov'
 require 'minitest/spec'
 require 'minitest/autorun'
 require 'minitest-vcr'
-require 'mocha/test_unit'
+require 'mocha/minitest'
 require 'vcr'
 require 'factory_bot'
 

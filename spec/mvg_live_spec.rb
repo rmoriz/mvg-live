@@ -1,4 +1,3 @@
-
 require 'spec_helper'
 
 describe MVG::Live, vcr: { record: :new_episodes } do
@@ -170,7 +169,7 @@ describe MVG::Live, vcr: { record: :new_episodes } do
   end
 
   describe 'CLI' do
-    it 'should apply convenience hacks on station names' do
+    before(:each) do
       MVG::Live.any_instance.expects(:cli_station_hacks_for)
                .with('Stachus').returns('Karlsplatz (Stachus)')
       MVG::Live.any_instance.expects(:cli_station_hacks_for)
