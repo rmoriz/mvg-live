@@ -1,25 +1,14 @@
 require 'rubygems'
-require 'simplecov'
 require 'minitest/spec'
 require 'minitest/autorun'
-require 'minitest/reporters'
 require 'vcr'
-
-SimpleCov.start do
-  skip '/spec/'
-  skip '/vendor/'
-end
-
-SimpleCov.command_name 'test'
+require 'webmock/minitest'
 
 require 'mvg/live'
 
-Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
-
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
-  config.hook_into :faraday
-  config.allow_http_connections_when_no_cassette = false
+  config.hook_into :webmock
   config.default_cassette_options = {
     record: :new_episodes,
     serialize_with: :json
@@ -52,7 +41,6 @@ class Minitest::Spec
   end
 
   def stub_response(live, body)
-    response = Struct.new(:body).new(body)
-    live.instance_variable_set(:@response_obj, response)
+    live.instance_variable_set(:@response_obj, MVG::Live::HTTP::Response.new(200, body))
   end
 end

@@ -9,13 +9,19 @@
           "string": ""
         },
         "headers": {
-          "User-Agent": [
-            "Faraday v2.15.1"
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
           ],
           "Accept": [
             "application/json"
           ],
-          "x-mvg-authority-check-api-key": [
+          "User-Agent": [
+            "Ruby"
+          ],
+          "Host": [
+            "www.mvg.de"
+          ],
+          "X-Mvg-Authority-Check-Api-Key": [
             "<MVG_API_KEY>"
           ]
         }
@@ -26,40 +32,40 @@
           "message": "200"
         },
         "headers": {
-          "date": [
-            "Mon, 23 Nov 2026 04:17:08 GMT"
+          "Date": [
+            "Mon, 23 Nov 2026 04:24:14 GMT"
           ],
-          "x-frame-options": [
+          "X-Frame-Options": [
             "SAMEORIGIN"
           ],
-          "strict-transport-security": [
+          "Strict-Transport-Security": [
             "max-age=31536000"
           ],
-          "pragma": [
+          "Pragma": [
             "no-cache"
           ],
-          "cache-control": [
+          "Cache-Control": [
             "no-cache, no-store, max-age=0, must-revalidate"
           ],
-          "expires": [
+          "Expires": [
             "0"
           ],
-          "content-length": [
+          "Content-Length": [
             "2244"
           ],
-          "content-type": [
+          "Content-Type": [
             "application/json;charset=UTF-8"
           ],
-          "server": [
+          "Server": [
             "SWM Webserver"
           ]
         },
         "body": {
-          "encoding": "UTF-8",
+          "encoding": "ASCII-8BIT",
           "string": "[{\"latitude\":48.133444,\"longitude\":11.566681,\"place\":\"München\",\"name\":\"Sendlinger Tor\",\"globalId\":\"de:09162:50\",\"divaId\":50,\"hasZoomData\":true,\"transportTypes\":[\"UBAHN\",\"TRAM\",\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"m\",\"type\":\"STATION\"},{\"latitude\":48.172723,\"longitude\":11.586435,\"place\":\"München\",\"name\":\"Schwabinger Tor\",\"globalId\":\"de:09162:459\",\"divaId\":459,\"hasZoomData\":false,\"transportTypes\":[\"TRAM\"],\"aliases\":\"\",\"tariffZones\":\"m\",\"type\":\"STATION\"},{\"latitude\":48.176137,\"longitude\":11.588312,\"place\":\"München\",\"name\":\"Am Münchner Tor\",\"globalId\":\"de:09162:501\",\"divaId\":501,\"hasZoomData\":false,\"transportTypes\":[\"TRAM\"],\"aliases\":\"\",\"tariffZones\":\"m\",\"type\":\"STATION\"},{\"latitude\":48.358703,\"longitude\":10.902628,\"place\":\"Augsburg\",\"name\":\"Rotes Tor\",\"globalId\":\"de:09761:116\",\"divaId\":2000116,\"hasZoomData\":false,\"transportTypes\":[\"TRAM\",\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":49.457552,\"longitude\":11.088292,\"place\":\"Nürnberg\",\"name\":\"Laufer Tor\",\"globalId\":\"de:09564:154\",\"divaId\":3000154,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.781716,\"longitude\":11.423588,\"place\":\"Ingolstadt\",\"name\":\"Audi Tor 3\",\"globalId\":\"de:09161:1850\",\"divaId\":1501850,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.786179,\"longitude\":11.408335,\"place\":\"Ingolstadt\",\"name\":\"Audi - Tor 10\",\"globalId\":\"de:09161:7544\",\"divaId\":1500074,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.790357,\"longitude\":11.419357,\"place\":\"Ingolstadt\",\"name\":\"Audi - N 56/Tor 7\",\"globalId\":\"de:09161:8838\",\"divaId\":1507830,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":49.791075,\"longitude\":9.962388,\"place\":\"Würzburg\",\"name\":\"Rottendorfer Tor\",\"globalId\":\"de:09663:48\",\"divaId\":3700048,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":49.944183,\"longitude\":11.56934,\"place\":\"Bayreuth\",\"name\":\"Unteres Tor\",\"globalId\":\"de:09462:22263\",\"divaId\":3022263,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"}]"
         }
       },
-      "recorded_at": "Mon, 23 Nov 2026 04:17:08 GMT"
+      "recorded_at": "Mon, 23 Nov 2026 04:24:14 GMT"
     }
   ],
   "recorded_with": "VCR 6.4.1"

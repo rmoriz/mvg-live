@@ -1,32 +1,21 @@
-require 'faraday'
+require 'json'
+require 'net/http'
+require 'uri'
 
 module MVG
   class Live
     module HTTP
-      DEFAULT_BASE_URL = 'https://www.mvg.de/api/bgw-pt/v3'.freeze
+      DEFAULT_BASE_URL = 'https://www.mvg.de/api/bgw-pt/v3'
+      API_KEY = '33d2f2c1b7b3b6a7e5f0d4c3b2a1908f'
 
-      # Public key used by the mvg.de web app. The API also works without it,
-      # but sending it keeps us on the same quota/behaviour as the web client.
-      API_KEY = '33d2f2c1b7b3b6a7e5f0d4c3b2a1908f'.freeze
+      LOCATION_LIMIT    = 10
+      MAX_DEPARTURES    = 30
+      MAX_STATION_FAILS = 5
 
-      LOCATION_LIMIT     = 10
-      MAX_DEPARTURES     = 30
-      MAX_STATION_FAILS  = 5
+      OPEN_TIMEOUT = 5
+      READ_TIMEOUT = 15
 
-      def connection
-        @conn ||= begin
-          conn = Faraday.new(url: @base_url) do |builder|
-            builder.request :url_encoded
-            builder.response :json, content_type: /\bjson$/
-            builder.adapter @faraday_adapter
-            builder.response :logger, @faraday_logger if @faraday_logger
-          end
-
-          conn.headers['Accept'] = 'application/json'
-          conn.headers['x-mvg-authority-check-api-key'] = @api_key
-          conn
-        end
-      end
+      Response = Struct.new(:status, :body)
 
       def retrieve
         return unless valid?
@@ -38,7 +27,7 @@ module MVG
         resolve_station
         return if @station_unknown
 
-        @response_obj = connection.get('departures', build_request_params)
+        @response_obj = request('departures', build_request_params)
       end
 
       # Looks up the station and stores the matching station id. Ambiguous or
@@ -47,11 +36,10 @@ module MVG
         query = station_to_mvg(@station)
         wanted = normalize_station(query)
 
-        response = connection.get('locations', query: query, limit: LOCATION_LIMIT)
+        response = request('locations', query: query, limit: LOCATION_LIMIT)
         @response_obj = response
 
-        body = response.body
-        candidates = body.is_a?(Array) ? body.select { |location| location['type'] == 'STATION' } : []
+        candidates = response.body.is_a?(Array) ? response.body.select { |l| l['type'] == 'STATION' } : []
         match = candidates.find { |location| station_names(location).include?(wanted) }
 
         if match
@@ -76,7 +64,7 @@ module MVG
       end
 
       def normalize_station(value)
-        to_utf8(value.to_s)
+        to_utf8(value)
           .gsub(/\([^)]*\)/, ' ')
           .squeeze(' ')
           .strip
@@ -102,6 +90,40 @@ module MVG
         else
           transport.to_s
         end
+      end
+
+      def build_request_headers
+        {
+          'Accept' => 'application/json',
+          'x-mvg-authority-check-api-key' => @api_key
+        }
+      end
+
+      private
+
+      def request(path, params)
+        uri = URI.join("#{@base_url}/", path)
+        uri.query = URI.encode_www_form(params)
+
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = uri.scheme == 'https'
+        http.open_timeout = OPEN_TIMEOUT
+        http.read_timeout = READ_TIMEOUT
+
+        http_request = Net::HTTP::Get.new(uri)
+        build_request_headers.each { |name, value| http_request[name] = value }
+
+        response = http.request(http_request)
+        @logger&.debug("#{http_request.method} #{uri} -> #{response.code}")
+
+        Response.new(response.code.to_i, parse_body(response))
+      end
+
+      def parse_body(response)
+        body = response.body.to_s.dup.force_encoding('UTF-8')
+        JSON.parse(body)
+      rescue JSON::ParserError
+        body
       end
     end
   end

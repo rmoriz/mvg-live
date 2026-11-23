@@ -134,16 +134,17 @@ The client talks to the (undocumented) JSON API that powers [mvg.de](https://www
 - `GET https://www.mvg.de/api/bgw-pt/v3/departures?globalId=<id>` for the departures
 
 Requests are sent with the public API key used by the MVG web app. It can be
-overridden by passing `api_key:` to `MVG::Live.new`, and the base URL by
-passing `base_url:`.
+overridden by passing `api_key:` to `MVG::Live.new`, the base URL by passing
+`base_url:`. The client only uses the standard library (`net/http`, `json`);
+the gem has no runtime dependencies.
 
 ## Upgrading from 2.x
 
 - Nokogiri/HTML scraping was replaced by the JSON API, the old
   `www.mvg-live.de` endpoint is gone.
-- Faraday 2 and ActiveModel 8 are required, Ruby 3.3+.
+- All runtime dependencies were dropped; Ruby 3.3+ is required.
 - `schema:`, `host:` and `path:` options were replaced by `base_url:`.
-- The default encoding is UTF-8 (`encoding:` is still available).
+- `faraday_adapter:` and `faraday_logger:` became `logger:`.
 
 
 ## Minitest-Specs

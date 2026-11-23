@@ -46,20 +46,21 @@ describe MVG::Live do
     end
   end
 
-  describe 'HTTP' do
-    it 'should return a faraday connection object' do
-      assert_instance_of Faraday::Connection, build_live('Westfriedhof').connection
+  describe 'dependencies' do
+    it 'ships without runtime dependencies' do
+      spec = Gem::Specification.load('mvg-live.gemspec')
+      assert_empty spec.runtime_dependencies
     end
+  end
 
+  describe 'HTTP' do
     it 'should point to the correct host and api version' do
-      connection = build_live('Westfriedhof').connection
-      assert_equal 'www.mvg.de', connection.host
-      assert_equal '/api/bgw-pt/v3', connection.url_prefix.path
+      assert_equal 'https://www.mvg.de/api/bgw-pt/v3', build_live('Westfriedhof').base_url
     end
 
     it 'should send the api key header' do
       assert_equal MVG::Live::HTTP::API_KEY,
-                   build_live('Westfriedhof').connection.headers['x-mvg-authority-check-api-key']
+                   build_live('Westfriedhof').build_request_headers['x-mvg-authority-check-api-key']
     end
 
     it 'should build the right query' do
@@ -75,10 +76,34 @@ describe MVG::Live do
       )
     end
 
+    it 'logs the request when a logger is given' do
+      logger = Class.new do
+        attr_reader :lines
+
+        def initialize
+          @lines = []
+        end
+
+        def debug(line)
+          @lines << line
+        end
+      end.new
+
+      build_live('Westfriedhof', logger: logger).retrieve
+      refute_empty logger.lines
+      assert_match(/\AGET https:\/\/www\.mvg\.de\/api\/bgw-pt\/v3\/locations/, logger.lines.first)
+    end
+
+    it 'falls back to the raw body for non-JSON responses' do
+      live = build_live('Westfriedhof')
+      response = Struct.new(:body).new('<html>Service unavailable</html>')
+      assert_equal '<html>Service unavailable</html>', live.send(:parse_body, response)
+    end
+
     it 'should provide the response object after retrieving' do
       live = build_live('Westfriedhof')
       live.retrieve
-      assert_instance_of Faraday::Response, live.response_obj
+      assert_instance_of MVG::Live::HTTP::Response, live.response_obj
       assert_match(/\Ade:\d+:\d+\z/, live.global_id)
     end
   end

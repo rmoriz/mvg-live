@@ -37,11 +37,11 @@ where already present).
 
 ## Layout
 
-- `lib/mvg/live.rb` – `MVG::Live`, validation and option handling.
-- `lib/mvg/live/http.rb` – Faraday connection, station resolution, departures request.
+- `lib/mvg/live.rb` – `MVG::Live`, option handling, inline validations
+  (`MVG::Live::Errors`), UTF-8 helper.
+- `lib/mvg/live/http.rb` – Net::HTTP client, station resolution, departures request.
 - `lib/mvg/live/parser.rb` – turns the JSON payload into `{line:, destination:, minutes:}` hashes.
 - `lib/mvg/live/cli.rb` – display/JSON rendering, `.mvg` user defaults, station name hacks.
-- `lib/mvg/live/encoding.rb` – UTF-8 helpers.
 - `bin/` – the two entry points; keep them thin.
 - `spec/` – Minitest specs; `spec/spec_helper.rb` wires VCR.
 
@@ -63,8 +63,8 @@ Request flow: `fetch` → `resolve_station` (GET `locations`) → GET `departure
 ## Tests and fixtures
 
 HTTP fixtures live in `spec/fixtures/vcr_cassettes` and are replayed offline
-(`allow_http_connections_when_no_cassette = false`). Never let a spec hit the
-network implicitly.
+through VCR's WebMock hook (WebMock blocks unstubbed connections). Never let a
+spec hit the network implicitly.
 
 To refresh fixtures:
 
@@ -83,7 +83,8 @@ Parser specs use `stub_response` to inject a payload, so they need no cassette.
 
 ## Conventions
 
-- Do not add runtime dependencies without need; the app is meant to stay small.
+- The gem has **no runtime dependencies** (stdlib `net/http` + `json` only).
+  Think twice before adding one; dev dependencies are fine.
 - Public API compatibility matters: `MVG::Live.fetch(station, transports:)`,
   `result_display`, `result_sorted`, `station_unknown`, `station_alternates`,
   `to_display`, `to_json` are all used by the CLIs and downstream users.

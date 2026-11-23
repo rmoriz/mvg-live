@@ -21,13 +21,8 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 3.3.0'
 
-  s.add_runtime_dependency 'activemodel', '~> 8.0'
-  s.add_runtime_dependency 'activesupport', '~> 8.0'
-  s.add_runtime_dependency 'faraday', '~> 2.0'
-
   s.add_development_dependency 'minitest'
-  s.add_development_dependency 'minitest-reporters'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'simplecov'
   s.add_development_dependency 'vcr', '~> 6.0'
+  s.add_development_dependency 'webmock'
 end

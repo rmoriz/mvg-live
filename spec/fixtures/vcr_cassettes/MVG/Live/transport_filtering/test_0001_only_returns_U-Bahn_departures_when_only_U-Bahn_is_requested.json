@@ -9,13 +9,19 @@
           "string": ""
         },
         "headers": {
-          "User-Agent": [
-            "Faraday v2.15.1"
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
           ],
           "Accept": [
             "application/json"
           ],
-          "x-mvg-authority-check-api-key": [
+          "User-Agent": [
+            "Ruby"
+          ],
+          "Host": [
+            "www.mvg.de"
+          ],
+          "X-Mvg-Authority-Check-Api-Key": [
             "<MVG_API_KEY>"
           ]
         }
@@ -26,57 +32,63 @@
           "message": "200"
         },
         "headers": {
-          "date": [
-            "Mon, 23 Nov 2026 04:17:09 GMT"
+          "Date": [
+            "Mon, 23 Nov 2026 04:24:16 GMT"
           ],
-          "x-frame-options": [
+          "X-Frame-Options": [
             "SAMEORIGIN"
           ],
-          "strict-transport-security": [
+          "Strict-Transport-Security": [
             "max-age=31536000"
           ],
-          "pragma": [
+          "Pragma": [
             "no-cache"
           ],
-          "cache-control": [
+          "Cache-Control": [
             "no-cache, no-store, max-age=0, must-revalidate"
           ],
-          "expires": [
+          "Expires": [
             "0"
           ],
-          "content-length": [
+          "Content-Length": [
             "2070"
           ],
-          "content-type": [
+          "Content-Type": [
             "application/json;charset=UTF-8"
           ],
-          "server": [
+          "Server": [
             "SWM Webserver"
           ]
         },
         "body": {
-          "encoding": "UTF-8",
+          "encoding": "ASCII-8BIT",
           "string": "[{\"latitude\":48.169829,\"longitude\":11.528538,\"place\":\"München\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09162:200\",\"divaId\":200,\"hasZoomData\":true,\"transportTypes\":[\"UBAHN\",\"TRAM\",\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"m\",\"type\":\"STATION\"},{\"latitude\":49.461703,\"longitude\":11.049547,\"place\":\"Nürnberg\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09564:235\",\"divaId\":3000235,\"hasZoomData\":false,\"transportTypes\":[\"TRAM\",\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.365387,\"longitude\":10.860578,\"place\":\"Augsburg\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09761:684\",\"divaId\":2000684,\"hasZoomData\":false,\"transportTypes\":[\"TRAM\",\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":49.463321,\"longitude\":11.051317,\"place\":\"Nürnberg\",\"name\":\"Westfriedhof Kreuzung\",\"globalId\":\"de:09564:251\",\"divaId\":3000251,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.764085,\"longitude\":11.411982,\"place\":\"Ingolstadt\",\"name\":\"Westfriedhof/Brodmühlweg\",\"globalId\":\"de:09161:844\",\"divaId\":1500844,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.765939,\"longitude\":11.411254,\"place\":\"Ingolstadt\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09161:8027\",\"divaId\":1500835,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":49.035211,\"longitude\":10.959096,\"place\":\"Weißenburg\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09577:16053\",\"divaId\":3016053,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":49.576363,\"longitude\":10.944292,\"place\":\"Steudach\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09562:3776\",\"divaId\":3003776,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.169228200000006,\"longitude\":11.5269309,\"place\":\"München\",\"name\":\"Baldurstraße (Westfriedhof)\",\"type\":\"POI\"},{\"latitude\":48.17147608788349,\"longitude\":11.521869232398817,\"place\":\"München\",\"name\":\"Westfriedhof\",\"type\":\"POI\"}]"
         }
       },
-      "recorded_at": "Mon, 23 Nov 2026 04:17:09 GMT"
+      "recorded_at": "Mon, 23 Nov 2026 04:24:16 GMT"
     },
     {
       "request": {
         "method": "get",
-        "uri": "https://www.mvg.de/api/bgw-pt/v3/departures?globalId=de%3A09162%3A200&limit=30&transportTypes=UBAHN",
+        "uri": "https://www.mvg.de/api/bgw-pt/v3/departures?globalId=de:09162:200&limit=30&transportTypes=UBAHN",
         "body": {
           "encoding": "US-ASCII",
           "string": ""
         },
         "headers": {
-          "User-Agent": [
-            "Faraday v2.15.1"
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
           ],
           "Accept": [
             "application/json"
           ],
-          "x-mvg-authority-check-api-key": [
+          "User-Agent": [
+            "Ruby"
+          ],
+          "Host": [
+            "www.mvg.de"
+          ],
+          "X-Mvg-Authority-Check-Api-Key": [
             "<MVG_API_KEY>"
           ]
         }
@@ -87,43 +99,40 @@
           "message": "200"
         },
         "headers": {
-          "date": [
-            "Mon, 23 Nov 2026 04:17:09 GMT"
+          "Date": [
+            "Mon, 23 Nov 2026 04:24:16 GMT"
           ],
-          "x-frame-options": [
+          "X-Frame-Options": [
             "SAMEORIGIN"
           ],
-          "strict-transport-security": [
+          "Strict-Transport-Security": [
             "max-age=31536000"
           ],
-          "pragma": [
+          "Pragma": [
             "no-cache"
           ],
-          "cache-control": [
+          "Cache-Control": [
             "no-cache, no-store, max-age=0, must-revalidate"
           ],
-          "expires": [
+          "Expires": [
             "0"
           ],
-          "content-encoding": [
-            "gzip"
+          "Content-Length": [
+            "7868"
           ],
-          "content-length": [
-            "577"
-          ],
-          "content-type": [
+          "Content-Type": [
             "application/json;charset=UTF-8"
           ],
-          "server": [
+          "Server": [
             "SWM Webserver"
           ]
         },
         "body": {
-          "encoding": "UTF-8",
-          "string": "[{\"plannedDepartureTime\":1893499200000,\"realtime\":false,\"realtimeDepartureTime\":1893499200000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":125},{\"plannedDepartureTime\":1893499620000,\"realtime\":false,\"realtimeDepartureTime\":1893499620000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":498},{\"plannedDepartureTime\":1893499800000,\"realtime\":false,\"realtimeDepartureTime\":1893499800000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":300},{\"plannedDepartureTime\":1893500400000,\"realtime\":false,\"realtimeDepartureTime\":1893500400000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":126},{\"plannedDepartureTime\":1893500820000,\"realtime\":false,\"realtimeDepartureTime\":1893500820000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":500},{\"plannedDepartureTime\":1893501000000,\"realtime\":false,\"realtimeDepartureTime\":1893501000000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":127},{\"plannedDepartureTime\":1893501420000,\"realtime\":false,\"realtimeDepartureTime\":1893501420000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":502},{\"plannedDepartureTime\":1893501600000,\"realtime\":false,\"realtimeDepartureTime\":1893501600000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":128},{\"plannedDepartureTime\":1893502020000,\"realtime\":false,\"realtimeDepartureTime\":1893502020000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":504},{\"plannedDepartureTime\":1893502200000,\"realtime\":false,\"realtimeDepartureTime\":1893502200000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":129},{\"plannedDepartureTime\":1893502620000,\"realtime\":false,\"realtimeDepartureTime\":1893502620000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":506},{\"plannedDepartureTime\":1893502800000,\"realtime\":false,\"realtimeDepartureTime\":1893502800000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":130},{\"plannedDepartureTime\":1893503040000,\"realtime\":false,\"realtimeDepartureTime\":1893503040000,\"transportType\":\"UBAHN\",\"label\":\"U7\",\"divaId\":\"010U7\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Sendlinger Tor\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U7:G:H:016\",\"tripCode\":7},{\"plannedDepartureTime\":1893503220000,\"realtime\":false,\"realtimeDepartureTime\":1893503220000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":508},{\"plannedDepartureTime\":1893566220000,\"realtime\":false,\"realtimeDepartureTime\":1893566220000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":749},{\"plannedDepartureTime\":1893567000000,\"realtime\":false,\"realtimeDepartureTime\":1893567000000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":316},{\"plannedDepartureTime\":1893567420000,\"realtime\":false,\"realtimeDepartureTime\":1893567420000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":751}]"
+          "encoding": "ASCII-8BIT",
+          "string": "[{\"plannedDepartureTime\":1893499200000,\"realtime\":false,\"realtimeDepartureTime\":1893499200000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":125},{\"plannedDepartureTime\":1893499560000,\"realtime\":true,\"delayInMinutes\":-1,\"realtimeDepartureTime\":1893499560000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":498},{\"plannedDepartureTime\":1893499800000,\"realtime\":false,\"realtimeDepartureTime\":1893499800000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":300},{\"plannedDepartureTime\":1893500400000,\"realtime\":false,\"realtimeDepartureTime\":1893500400000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":126},{\"plannedDepartureTime\":1893500820000,\"realtime\":false,\"realtimeDepartureTime\":1893500820000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":500},{\"plannedDepartureTime\":1893501000000,\"realtime\":false,\"realtimeDepartureTime\":1893501000000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":127},{\"plannedDepartureTime\":1893501420000,\"realtime\":false,\"realtimeDepartureTime\":1893501420000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":502},{\"plannedDepartureTime\":1893501600000,\"realtime\":false,\"realtimeDepartureTime\":1893501600000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":128},{\"plannedDepartureTime\":1893502020000,\"realtime\":false,\"realtimeDepartureTime\":1893502020000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":504},{\"plannedDepartureTime\":1893502200000,\"realtime\":false,\"realtimeDepartureTime\":1893502200000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":129},{\"plannedDepartureTime\":1893502620000,\"realtime\":false,\"realtimeDepartureTime\":1893502620000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":506},{\"plannedDepartureTime\":1893502800000,\"realtime\":false,\"realtimeDepartureTime\":1893502800000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":130},{\"plannedDepartureTime\":1893503040000,\"realtime\":false,\"realtimeDepartureTime\":1893503040000,\"transportType\":\"UBAHN\",\"label\":\"U7\",\"divaId\":\"010U7\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Sendlinger Tor\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U7:G:H:016\",\"tripCode\":7},{\"plannedDepartureTime\":1893503220000,\"realtime\":false,\"realtimeDepartureTime\":1893503220000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":508},{\"plannedDepartureTime\":1893566220000,\"realtime\":false,\"realtimeDepartureTime\":1893566220000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":749},{\"plannedDepartureTime\":1893567000000,\"realtime\":false,\"realtimeDepartureTime\":1893567000000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Mangfallplatz\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:52\",\"lineId\":\"swm:010U1:G:H:016\",\"tripCode\":316},{\"plannedDepartureTime\":1893567420000,\"realtime\":false,\"realtimeDepartureTime\":1893567420000,\"transportType\":\"UBAHN\",\"label\":\"U1\",\"divaId\":\"010U1\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Olympia-Einkaufszentrum\",\"cancelled\":false,\"sev\":false,\"platform\":1,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:200\",\"stopPointGlobalId\":\"de:09162:200:51:51\",\"lineId\":\"swm:010U1:G:R:016\",\"tripCode\":751}]"
         }
       },
-      "recorded_at": "Mon, 23 Nov 2026 04:17:09 GMT"
+      "recorded_at": "Mon, 23 Nov 2026 04:24:17 GMT"
     }
   ],
   "recorded_with": "VCR 6.4.1"

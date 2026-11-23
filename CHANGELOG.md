@@ -8,7 +8,8 @@ Complete modernization after the shutdown of the old
 - Replace HTML scraping with the JSON API of mvg.de
   (`/api/bgw-pt/v3/locations` and `/api/bgw-pt/v3/departures`).
 - Drop Nokogiri and multi_json, the response is parsed as JSON.
-- Upgrade to Faraday 2 and ActiveModel/ActiveSupport 8.
+- Drop all runtime dependencies: plain Net::HTTP and JSON instead of
+  Faraday, an internal `MVG::Live::Errors` instead of ActiveModel.
 - Require Ruby >= 3.3; replace the dead Travis CI setup with GitHub Actions.
 - Replace the `schema:`/`host:`/`path:` options with `base_url:`.
 - Fix `MVG::Live.new` crashing when user defaults are loaded without a station.
