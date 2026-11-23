@@ -149,9 +149,12 @@ passing `base_url:`.
 ## Minitest-Specs
 
 see "spec/"-directory. The HTTP fixtures are recorded from the live API and
-replayed with VCR, so the suite runs offline. Record new episodes with:
+replayed with VCR, so the suite runs offline. Refresh them with:
 
-    rm -rf spec/fixtures/vcr_cassettes && bundle exec rake test
+    rm -rf spec/fixtures/vcr_cassettes
+    bundle exec rake test
+    ruby script/rewrite_cassettes.rb
+    bundle exec rake test
 
 
 ## Disclaimer
