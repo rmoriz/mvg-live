@@ -179,7 +179,7 @@ see LICENSE file (MIT)
 Copyright
 ---------
 
-Copyright © 2016 [Roland Moriz](https://roland.io)
+Copyright © 2016-2026 [Roland Moriz](https://roland.io)
 
 [![LinkedIn](http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png)](https://www.linkedin.com/in/rmoriz)
 [![Twitter](http://i.imgur.com/1kYFHlu.png)](https://twitter.com/rmoriz)
