@@ -7,7 +7,7 @@ PATH
       faraday (~> 2.0)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activemodel (8.1.4.1)
       activesupport (= 8.1.4.1)
