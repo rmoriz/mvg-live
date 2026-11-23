@@ -1,0 +1,127 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.mvg.de/api/bgw-pt/v3/locations?limit=10&query=Moosach",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.15.1"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "x-mvg-authority-check-api-key": [
+            "<MVG_API_KEY>"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "200"
+        },
+        "headers": {
+          "date": [
+            "Mon, 23 Nov 2026 04:18:52 GMT"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000"
+          ],
+          "pragma": [
+            "no-cache"
+          ],
+          "cache-control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "expires": [
+            "0"
+          ],
+          "content-length": [
+            "1591"
+          ],
+          "content-type": [
+            "application/json;charset=UTF-8"
+          ],
+          "server": [
+            "SWM Webserver"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "[{\"latitude\":48.180792,\"longitude\":11.507643,\"place\":\"München\",\"name\":\"Moosach\",\"globalId\":\"de:09162:300\",\"divaId\":300,\"hasZoomData\":true,\"transportTypes\":[\"SBAHN\",\"UBAHN\",\"TRAM\",\"BUS\",\"BAHN\"],\"aliases\":\"\",\"tariffZones\":\"m|1\",\"type\":\"STATION\"},{\"latitude\":48.18187,\"longitude\":11.517875,\"place\":\"München\",\"name\":\"Moosacher St.-Martins-Platz\",\"globalId\":\"de:09162:370\",\"divaId\":370,\"hasZoomData\":true,\"transportTypes\":[\"UBAHN\",\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"m\",\"type\":\"STATION\"},{\"latitude\":48.187176,\"longitude\":11.566079,\"place\":\"München\",\"name\":\"Moosacher Straße\",\"globalId\":\"de:09162:331\",\"divaId\":331,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"m|1\",\"type\":\"STATION\"},{\"latitude\":48.1615964,\"longitude\":11.535558,\"place\":\"München\",\"name\":\"Kinderkrippe Neuhausen-Moosach\",\"type\":\"POI\"},{\"latitude\":48.1699367,\"longitude\":11.533100500000002,\"place\":\"München\",\"name\":\"Bücherschrank Moosach II Borstei\",\"type\":\"POI\"},{\"latitude\":48.17423819386074,\"longitude\":11.53646602112524,\"place\":\"München\",\"name\":\"Ehemaliges Gaswerk in Moosach\",\"type\":\"POI\"},{\"latitude\":48.172187,\"longitude\":11.530395100000002,\"place\":\"München\",\"name\":\"Espira Moosach\",\"type\":\"POI\"},{\"latitude\":48.173168000000004,\"longitude\":11.527737100000001,\"place\":\"München\",\"name\":\"Infanterix Moosach\",\"type\":\"POI\"},{\"latitude\":48.175452872855416,\"longitude\":11.530825313169844,\"place\":\"München\",\"name\":\"Busbetriebshof Moosach\",\"type\":\"POI\"},{\"latitude\":48.180197650924676,\"longitude\":11.53776655064773,\"place\":\"München\",\"name\":\"Städtischer Berufsschulcampus Moosach\",\"type\":\"POI\"}]"
+        }
+      },
+      "recorded_at": "Mon, 23 Nov 2026 04:18:52 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.mvg.de/api/bgw-pt/v3/departures?globalId=de%3A09162%3A300&limit=30&transportTypes=UBAHN",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.15.1"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "x-mvg-authority-check-api-key": [
+            "<MVG_API_KEY>"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "200"
+        },
+        "headers": {
+          "date": [
+            "Mon, 23 Nov 2026 04:18:52 GMT"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000"
+          ],
+          "pragma": [
+            "no-cache"
+          ],
+          "cache-control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "expires": [
+            "0"
+          ],
+          "content-length": [
+            "2749"
+          ],
+          "content-type": [
+            "application/json;charset=UTF-8"
+          ],
+          "server": [
+            "SWM Webserver"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "[{\"plannedDepartureTime\":1795407900000,\"realtime\":false,\"realtimeDepartureTime\":1795407900000,\"transportType\":\"UBAHN\",\"label\":\"U3\",\"divaId\":\"010U3\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Sendlinger Tor\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:300\",\"stopPointGlobalId\":\"de:09162:300:51:52\",\"lineId\":\"swm:010U3:G:H:016\",\"tripCode\":282},{\"plannedDepartureTime\":1795409100000,\"realtime\":false,\"realtimeDepartureTime\":1795409100000,\"transportType\":\"UBAHN\",\"label\":\"U3\",\"divaId\":\"010U3\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Sendlinger Tor\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:300\",\"stopPointGlobalId\":\"de:09162:300:51:52\",\"lineId\":\"swm:010U3:G:H:016\",\"tripCode\":283},{\"plannedDepartureTime\":1795409700000,\"realtime\":false,\"realtimeDepartureTime\":1795409700000,\"transportType\":\"UBAHN\",\"label\":\"U3\",\"divaId\":\"010U3\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Sendlinger Tor\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:300\",\"stopPointGlobalId\":\"de:09162:300:51:52\",\"lineId\":\"swm:010U3:G:H:016\",\"tripCode\":284},{\"plannedDepartureTime\":1795410300000,\"realtime\":false,\"realtimeDepartureTime\":1795410300000,\"transportType\":\"UBAHN\",\"label\":\"U3\",\"divaId\":\"010U3\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Sendlinger Tor\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:300\",\"stopPointGlobalId\":\"de:09162:300:51:52\",\"lineId\":\"swm:010U3:G:H:016\",\"tripCode\":285},{\"plannedDepartureTime\":1795410900000,\"realtime\":false,\"realtimeDepartureTime\":1795410900000,\"transportType\":\"UBAHN\",\"label\":\"U3\",\"divaId\":\"010U3\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Sendlinger Tor\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:300\",\"stopPointGlobalId\":\"de:09162:300:51:52\",\"lineId\":\"swm:010U3:G:H:016\",\"tripCode\":286},{\"plannedDepartureTime\":1795411500000,\"realtime\":false,\"realtimeDepartureTime\":1795411500000,\"transportType\":\"UBAHN\",\"label\":\"U3\",\"divaId\":\"010U3\",\"network\":\"swm\",\"trainType\":\"\",\"destination\":\"Sendlinger Tor\",\"cancelled\":false,\"sev\":false,\"platform\":2,\"platformChanged\":false,\"messages\":[],\"infos\":[],\"bannerHash\":\"\",\"occupancy\":\"UNKNOWN\",\"stationGlobalId\":\"de:09162:300\",\"stopPointGlobalId\":\"de:09162:300:51:52\",\"lineId\":\"swm:010U3:G:H:016\",\"tripCode\":287}]"
+        }
+      },
+      "recorded_at": "Mon, 23 Nov 2026 04:18:53 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.4.1"
+}

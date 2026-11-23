@@ -1,0 +1,130 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.mvg.de/api/bgw-pt/v3/locations?limit=10&query=Westfriedhof",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.15.1"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "x-mvg-authority-check-api-key": [
+            "<MVG_API_KEY>"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "200"
+        },
+        "headers": {
+          "date": [
+            "Mon, 23 Nov 2026 04:17:10 GMT"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000"
+          ],
+          "pragma": [
+            "no-cache"
+          ],
+          "cache-control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "expires": [
+            "0"
+          ],
+          "content-length": [
+            "2070"
+          ],
+          "content-type": [
+            "application/json;charset=UTF-8"
+          ],
+          "server": [
+            "SWM Webserver"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "[{\"latitude\":48.169829,\"longitude\":11.528538,\"place\":\"München\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09162:200\",\"divaId\":200,\"hasZoomData\":true,\"transportTypes\":[\"UBAHN\",\"TRAM\",\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"m\",\"type\":\"STATION\"},{\"latitude\":49.461703,\"longitude\":11.049547,\"place\":\"Nürnberg\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09564:235\",\"divaId\":3000235,\"hasZoomData\":false,\"transportTypes\":[\"TRAM\",\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.365387,\"longitude\":10.860578,\"place\":\"Augsburg\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09761:684\",\"divaId\":2000684,\"hasZoomData\":false,\"transportTypes\":[\"TRAM\",\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":49.463321,\"longitude\":11.051317,\"place\":\"Nürnberg\",\"name\":\"Westfriedhof Kreuzung\",\"globalId\":\"de:09564:251\",\"divaId\":3000251,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.764085,\"longitude\":11.411982,\"place\":\"Ingolstadt\",\"name\":\"Westfriedhof/Brodmühlweg\",\"globalId\":\"de:09161:844\",\"divaId\":1500844,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.765939,\"longitude\":11.411254,\"place\":\"Ingolstadt\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09161:8027\",\"divaId\":1500835,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":49.035211,\"longitude\":10.959096,\"place\":\"Weißenburg\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09577:16053\",\"divaId\":3016053,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":49.576363,\"longitude\":10.944292,\"place\":\"Steudach\",\"name\":\"Westfriedhof\",\"globalId\":\"de:09562:3776\",\"divaId\":3003776,\"hasZoomData\":false,\"transportTypes\":[\"BUS\"],\"aliases\":\"\",\"tariffZones\":\"\",\"type\":\"STATION\"},{\"latitude\":48.169228200000006,\"longitude\":11.5269309,\"place\":\"München\",\"name\":\"Baldurstraße (Westfriedhof)\",\"type\":\"POI\"},{\"latitude\":48.17147608788349,\"longitude\":11.521869232398817,\"place\":\"München\",\"name\":\"Westfriedhof\",\"type\":\"POI\"}]"
+        }
+      },
+      "recorded_at": "Mon, 23 Nov 2026 04:17:09 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.mvg.de/api/bgw-pt/v3/departures?globalId=de%3A09162%3A200&limit=30&transportTypes=UBAHN%2CBUS%2CTRAM%2CSBAHN",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.15.1"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "x-mvg-authority-check-api-key": [
+            "<MVG_API_KEY>"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "200"
+        },
+        "headers": {
+          "date": [
+            "Mon, 23 Nov 2026 04:17:10 GMT"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000"
+          ],
+          "pragma": [
+            "no-cache"
+          ],
+          "cache-control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "expires": [
+            "0"
+          ],
+          "content-encoding": [
+            "gzip"
+          ],
+          "content-length": [
+            "1035"
+          ],
+          "content-type": [
+            "application/json;charset=UTF-8"
+          ],
+          "server": [
+            "SWM Webserver"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "[{\"plannedDepartureTime\": 1893456000000, \"realtime\": true, \"delayInMinutes\": 2, \"realtimeDepartureTime\": 1893456000000, \"transportType\": \"TRAM\", \"label\": \"20\", \"divaId\": \"02020\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Moosach Bf.\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 1, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:2:2\", \"lineId\": \"swm:02020:G:R:016\", \"tripId\": \"2169664\", \"tripCode\": 230}, {\"plannedDepartureTime\": 1893456120000, \"realtime\": false, \"realtimeDepartureTime\": 1893456120000, \"transportType\": \"TRAM\", \"label\": \"20\", \"divaId\": \"02020\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Karlsplatz (Stachus)\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 2, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:2:5\", \"lineId\": \"swm:02020:G:H:016\", \"tripId\": \"2170594\", \"tripCode\": 2}, {\"plannedDepartureTime\": 1893456300000, \"realtime\": false, \"realtimeDepartureTime\": 1893456300000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Mangfallplatz\", \"cancelled\": false, \"sev\": false, \"platform\": 2, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:52\", \"lineId\": \"swm:010U1:G:H:016\", \"tripCode\": 125}, {\"plannedDepartureTime\": 1893456540000, \"realtime\": false, \"realtimeDepartureTime\": 1893456540000, \"transportType\": \"BUS\", \"label\": \"165\", \"divaId\": \"03165\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Allach Bf.\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 4, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:1:4\", \"lineId\": \"swm:03165:G:R:016\", \"tripId\": \"3819156\", \"tripCode\": 217}, {\"plannedDepartureTime\": 1893456720000, \"realtime\": false, \"realtimeDepartureTime\": 1893456720000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Olympia-Einkaufszentrum\", \"cancelled\": false, \"sev\": false, \"platform\": 1, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:51\", \"lineId\": \"swm:010U1:G:R:016\", \"tripCode\": 498}, {\"plannedDepartureTime\": 1893456780000, \"realtime\": false, \"realtimeDepartureTime\": 1893456780000, \"transportType\": \"TRAM\", \"label\": \"21\", \"divaId\": \"02021\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Nicht Einsteigen\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 7, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:6:6\", \"lineId\": \"swm:02021:G:H:016\", \"tripId\": \"2169296\", \"tripCode\": 223}, {\"plannedDepartureTime\": 1893456900000, \"realtime\": false, \"realtimeDepartureTime\": 1893456900000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Mangfallplatz\", \"cancelled\": false, \"sev\": false, \"platform\": 2, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:52\", \"lineId\": \"swm:010U1:G:H:016\", \"tripCode\": 300}, {\"plannedDepartureTime\": 1893456900000, \"realtime\": false, \"realtimeDepartureTime\": 1893456900000, \"transportType\": \"BUS\", \"label\": \"180\", \"divaId\": \"03180\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Kieferngarten\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 6, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:1:7\", \"lineId\": \"swm:03180:G:R:016\", \"tripId\": \"3817445\", \"tripCode\": 475}, {\"plannedDepartureTime\": 1893457080000, \"realtime\": false, \"realtimeDepartureTime\": 1893457080000, \"transportType\": \"TRAM\", \"label\": \"20\", \"divaId\": \"02020\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Moosach Bf.\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 1, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:2:2\", \"lineId\": \"swm:02020:G:R:016\", \"tripId\": \"2168592\", \"tripCode\": 241}, {\"plannedDepartureTime\": 1893457320000, \"realtime\": false, \"realtimeDepartureTime\": 1893457320000, \"transportType\": \"TRAM\", \"label\": \"20\", \"divaId\": \"02020\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Karlsplatz (Stachus)\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 2, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:2:5\", \"lineId\": \"swm:02020:G:H:016\", \"tripId\": \"2169667\", \"tripCode\": 3}, {\"plannedDepartureTime\": 1893457500000, \"realtime\": false, \"realtimeDepartureTime\": 1893457500000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Mangfallplatz\", \"cancelled\": false, \"sev\": false, \"platform\": 2, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:52\", \"lineId\": \"swm:010U1:G:H:016\", \"tripCode\": 126}, {\"plannedDepartureTime\": 1893457740000, \"realtime\": false, \"realtimeDepartureTime\": 1893457740000, \"transportType\": \"BUS\", \"label\": \"165\", \"divaId\": \"03165\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Allach Bf.\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 4, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:1:4\", \"lineId\": \"swm:03165:G:R:016\", \"tripCode\": 218}, {\"plannedDepartureTime\": 1893457920000, \"realtime\": false, \"realtimeDepartureTime\": 1893457920000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Olympia-Einkaufszentrum\", \"cancelled\": false, \"sev\": false, \"platform\": 1, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:51\", \"lineId\": \"swm:010U1:G:R:016\", \"tripCode\": 500}, {\"plannedDepartureTime\": 1893457920000, \"realtime\": false, \"realtimeDepartureTime\": 1893457920000, \"transportType\": \"TRAM\", \"label\": \"20\", \"divaId\": \"02020\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Karlsplatz (Stachus)\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 2, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:2:5\", \"lineId\": \"swm:02020:G:H:016\", \"tripCode\": 4}, {\"plannedDepartureTime\": 1893457980000, \"realtime\": false, \"realtimeDepartureTime\": 1893457980000, \"transportType\": \"TRAM\", \"label\": \"21\", \"divaId\": \"02021\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Nicht Einsteigen\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 7, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:6:6\", \"lineId\": \"swm:02021:G:H:016\", \"tripCode\": 225}, {\"plannedDepartureTime\": 1893458100000, \"realtime\": false, \"realtimeDepartureTime\": 1893458100000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Mangfallplatz\", \"cancelled\": false, \"sev\": false, \"platform\": 2, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:52\", \"lineId\": \"swm:010U1:G:H:016\", \"tripCode\": 127}, {\"plannedDepartureTime\": 1893458100000, \"realtime\": true, \"delayInMinutes\": 1, \"realtimeDepartureTime\": 1893458100000, \"transportType\": \"BUS\", \"label\": \"180\", \"divaId\": \"03180\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Kieferngarten\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 6, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:1:7\", \"lineId\": \"swm:03180:G:R:016\", \"tripCode\": 476}, {\"plannedDepartureTime\": 1893458220000, \"realtime\": false, \"realtimeDepartureTime\": 1893458220000, \"transportType\": \"BUS\", \"label\": \"164\", \"divaId\": \"03164\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Augustenfelder Str.\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 4, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:1:9\", \"lineId\": \"swm:03164:G:R:016\", \"tripCode\": 214}, {\"plannedDepartureTime\": 1893458280000, \"realtime\": false, \"realtimeDepartureTime\": 1893458280000, \"transportType\": \"TRAM\", \"label\": \"20\", \"divaId\": \"02020\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Moosach Bf.\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 1, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:2:2\", \"lineId\": \"swm:02020:G:R:016\", \"tripCode\": 242}, {\"plannedDepartureTime\": 1893458520000, \"realtime\": false, \"realtimeDepartureTime\": 1893458520000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Olympia-Einkaufszentrum\", \"cancelled\": false, \"sev\": false, \"platform\": 1, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:51\", \"lineId\": \"swm:010U1:G:R:016\", \"tripCode\": 502}, {\"plannedDepartureTime\": 1893458520000, \"realtime\": false, \"realtimeDepartureTime\": 1893458520000, \"transportType\": \"TRAM\", \"label\": \"20\", \"divaId\": \"02020\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Karlsplatz (Stachus)\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 2, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:2:5\", \"lineId\": \"swm:02020:G:H:016\", \"tripCode\": 5}, {\"plannedDepartureTime\": 1893458700000, \"realtime\": false, \"realtimeDepartureTime\": 1893458700000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Mangfallplatz\", \"cancelled\": false, \"sev\": false, \"platform\": 2, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:52\", \"lineId\": \"swm:010U1:G:H:016\", \"tripCode\": 128}, {\"plannedDepartureTime\": 1893458820000, \"realtime\": false, \"realtimeDepartureTime\": 1893458820000, \"transportType\": \"BUS\", \"label\": \"165\", \"divaId\": \"03165\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Allach Bf.\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 4, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:1:4\", \"lineId\": \"swm:03165:G:R:016\", \"tripCode\": 190}, {\"plannedDepartureTime\": 1893458820000, \"realtime\": false, \"realtimeDepartureTime\": 1893458820000, \"transportType\": \"TRAM\", \"label\": \"21\", \"divaId\": \"02021\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Nicht Einsteigen\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 7, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:6:6\", \"lineId\": \"swm:02021:G:H:016\", \"tripCode\": 226}, {\"plannedDepartureTime\": 1893458880000, \"realtime\": false, \"realtimeDepartureTime\": 1893458880000, \"transportType\": \"TRAM\", \"label\": \"20\", \"divaId\": \"02020\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Moosach Bf.\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 1, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:2:2\", \"lineId\": \"swm:02020:G:R:016\", \"tripCode\": 232}, {\"plannedDepartureTime\": 1893523320000, \"realtime\": false, \"realtimeDepartureTime\": 1893523320000, \"transportType\": \"TRAM\", \"label\": \"20\", \"divaId\": \"02020\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Karlsplatz (Stachus)\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 2, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:2:5\", \"lineId\": \"swm:02020:G:H:016\", \"tripCode\": 197}, {\"plannedDepartureTime\": 1893523320000, \"realtime\": false, \"realtimeDepartureTime\": 1893523320000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Olympia-Einkaufszentrum\", \"cancelled\": false, \"sev\": false, \"platform\": 1, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:51\", \"lineId\": \"swm:010U1:G:R:016\", \"tripCode\": 749}, {\"plannedDepartureTime\": 1893523980000, \"realtime\": false, \"realtimeDepartureTime\": 1893523980000, \"transportType\": \"TRAM\", \"label\": \"21\", \"divaId\": \"02021\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"St.-Veit-Straße\", \"cancelled\": false, \"sev\": false, \"stopPositionNumber\": 7, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:6:6\", \"lineId\": \"swm:02021:G:H:016\", \"tripCode\": 508}, {\"plannedDepartureTime\": 1893524100000, \"realtime\": false, \"realtimeDepartureTime\": 1893524100000, \"transportType\": \"UBAHN\", \"label\": \"U1\", \"divaId\": \"010U1\", \"network\": \"swm\", \"trainType\": \"\", \"destination\": \"Mangfallplatz\", \"cancelled\": false, \"sev\": false, \"platform\": 2, \"platformChanged\": false, \"messages\": [], \"infos\": [], \"bannerHash\": \"\", \"occupancy\": \"UNKNOWN\", \"stationGlobalId\": \"de:09162:200\", \"stopPointGlobalId\": \"de:09162:200:51:52\", \"lineId\": \"swm:010U1:G:H:016\", \"tripCode\": 316}]"
+        }
+      },
+      "recorded_at": "Mon, 23 Nov 2026 04:17:10 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.4.1"
+}

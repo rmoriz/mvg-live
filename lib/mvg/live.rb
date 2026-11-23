@@ -1,4 +1,3 @@
-
 require 'active_model'
 require 'mvg/live/version'
 require 'mvg/live/encoding'
@@ -31,6 +30,7 @@ module MVG
     attr_reader :using_config_file
     attr_reader :station_unknown
     attr_reader :station_alternates
+    attr_reader :global_id
 
     def initialize(*args)
       @station    = args.shift
@@ -38,16 +38,18 @@ module MVG
 
       load_user_defaults if opts[:load_user_defaults]
 
-      @transports = opts[:transports] || ALL_TRANSPORTS
-      @schema     = opts[:schema]     || 'http'
-      @host       = opts[:host]       || 'www.mvg-live.de'
-      @path       = opts[:path]       || '/ims/dfiStaticAuswahl.svc'
-      @encoding   = opts[:encoding]   || 'iso-8859-1' # MVG, srsly...
+      @transports = opts[:transports].presence || @transports || ALL_TRANSPORTS
+      @base_url   = opts[:base_url]   || DEFAULT_BASE_URL
+      @api_key    = opts[:api_key]    || API_KEY
+      @encoding   = opts[:encoding]   || 'UTF-8'
+      @now        = opts[:now]
       @cli        = opts[:cli]        || false
 
       @faraday_adapter = opts[:faraday_adapter] || Faraday::Adapter::NetHttp
       @faraday_logger  = opts[:faraday_logger]
       @server_time = '??:??'
+      @station_unknown = false
+      @station_alternates = []
       self
     end
 

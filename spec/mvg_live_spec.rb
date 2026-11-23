@@ -1,203 +1,290 @@
-
 require 'spec_helper'
+require 'tempfile'
 
-describe MVG::Live, vcr: { record: :new_episodes } do
-  #
-  # before do
-  #   # https://github.com/myronmarston/vcr/wiki/Usage-with-MiniTest
-  #   VCR.insert_cassette __name__
-  # end
-  #
-  # after do
-  #   VCR.eject_cassette
-  # end
+describe MVG::Live do
+  BASE_TIME = Time.utc(2030, 1, 1, 12, 0, 0)
+  BASE_MS   = (BASE_TIME.to_f * 1000).to_i
 
   describe 'when initialized' do
     it 'can be created with no arguments' do
-      mvglive = MVG::Live.new
-      mvglive.must_be_instance_of MVG::Live
+      assert_instance_of MVG::Live, build_live
     end
 
     it 'can be created for a specific station' do
-      mvglive = MVG::Live.new 'Westfriedhof'
-      mvglive.station.must_match 'Westfriedhof'
+      assert_match 'Westfriedhof', build_live('Westfriedhof').station
     end
 
-    it 'can be created for a specific transports' do
+    it 'can be created for specific transports' do
       transports = %i[u bus tram s]
-      mvglive = MVG::Live.new 'Westfriedhof', transports: transports
-      mvglive.transports.must_be_same_as transports
+      assert_same transports, build_live('Westfriedhof', transports: transports).transports
+    end
+
+    it 'defaults to all transports' do
+      assert_equal %i[u bus tram s], build_live.transports
     end
   end
 
   describe 'validations' do
-    it 'should not valid without a station' do
-      mvglive = MVG::Live.new
-      mvglive.station = nil
-      mvglive.valid?.must_equal false
+    it 'should not be valid without a station' do
+      live = build_live
+      live.station = nil
+      assert_equal false, live.valid?
     end
 
     it 'should be valid with a station and the default transports' do
-      mvglive = build(:westfriedhof)
-      mvglive.valid?.must_equal true
+      assert_equal true, build_live('Westfriedhof').valid?
     end
 
     it 'should not be valid with invalid transports' do
-      transports = %i[transrapid express_s_bahn_zum_flughafen]
-      mvglive = MVG::Live.new 'Vom äh Hauptbahnof äh abfliegen', transports: transports
-      mvglive.valid?.must_equal false
-      mvglive.errors.keys.must_include :transports
+      live = build_live('Hauptbahnhof', transports: %i[transrapid express_s_bahn_zum_flughafen])
+      assert_equal false, live.valid?
+      assert_includes live.errors.attribute_names, :transports
+    end
+
+    it 'raises when fetching an invalid instance' do
+      assert_raises(ArgumentError) { build_live.fetch }
     end
   end
 
   describe 'HTTP' do
     it 'should return a faraday connection object' do
-      mvglive = build(:westfriedhof)
-      mvglive.connection.must_be_instance_of Faraday::Connection
+      assert_instance_of Faraday::Connection, build_live('Westfriedhof').connection
     end
 
-    it 'should point to the correct host' do
-      mvglive = build(:westfriedhof)
-      mvglive.connection.host.must_equal 'www.mvg-live.de'
+    it 'should point to the correct host and api version' do
+      connection = build_live('Westfriedhof').connection
+      assert_equal 'www.mvg.de', connection.host
+      assert_equal '/api/bgw-pt/v3', connection.url_prefix.path
+    end
+
+    it 'should send the api key header' do
+      assert_equal MVG::Live::HTTP::API_KEY,
+                   build_live('Westfriedhof').connection.headers['x-mvg-authority-check-api-key']
     end
 
     it 'should build the right query' do
-      mvglive = build(:westfriedhof)
-      mvglive.retrieve.env[:url].to_s
-             .must_equal 'http://www.mvg-live.de' \
-                    '/ims/dfiStaticAuswahl.svc' \
-                    '?bus=checked&haltestelle=Westfriedhof' \
-                    '&tram=checked&ubahn=checked'
+      live = build_live('Westfriedhof', transports: %i[u tram])
+      live.instance_variable_set(:@global_id, 'de:09162:4')
+      assert_equal(
+        {
+          globalId: 'de:09162:4',
+          limit: MVG::Live::HTTP::MAX_DEPARTURES,
+          transportTypes: 'UBAHN,TRAM'
+        },
+        live.build_request_params
+      )
     end
 
-    it 'should provide cached access to the response object through @response_obj' do
-      mvglive = build(:westfriedhof)
-      mvglive.retrieve
-      mvglive.response_obj.must_be_instance_of Faraday::Response
+    it 'should provide the response object after retrieving' do
+      live = build_live('Westfriedhof')
+      live.retrieve
+      assert_instance_of Faraday::Response, live.response_obj
+      assert_match(/\Ade:\d+:\d+\z/, live.global_id)
+    end
+  end
+
+  describe 'station lookup' do
+    it 'suggests alternatives for unknown stations' do
+      live = build_live('Tor')
+      live.fetch
+      assert_equal true, live.station_unknown
+      assert_includes live.station_alternates, 'Sendlinger Tor'
+      assert_nil live.result_sorted
     end
 
-    it 'should apply some station hacks'
+    it 'matches station names case-insensitively' do
+      live = build_live('hackerbrücke')
+      live.fetch
+      assert_equal false, live.station_unknown
+      refute_nil live.global_id
+    end
+
+    it 'strips station additions in parentheses' do
+      live = build_live('Hauptbahnhof')
+      live.fetch
+      assert_equal false, live.station_unknown
+      assert_operator live.result_sorted.size, :>, 0
+    end
+  end
+
+  describe 'fetching departures' do
+    before do
+      @live = build_live('Hackerbrücke', transports: %i[tram s], now: BASE_TIME)
+      @live.fetch
+    end
+
+    it 'returns a usable data structure' do
+      assert_instance_of Array, @live.result_display
+      refute_empty @live.result_display
+      @live.result_display.each do |entry|
+        assert_instance_of String, entry[:line]
+        assert_instance_of String, entry[:destination]
+        assert_instance_of Integer, entry[:minutes]
+      end
+    end
+
+    it 'returns valid UTF-8 destinations' do
+      @live.result_display.map { |entry| entry[:destination] }.each do |destination|
+        assert destination.valid_encoding?
+      end
+    end
+
+    it 'sorts the sorted result by departure time' do
+      minutes = @live.result_sorted.map { |entry| entry[:minutes] }
+      assert_equal minutes.sort, minutes
+    end
+
+    it 'exposes the server time' do
+      assert_match(/\A\d{2}:\d{2}\z/, @live.server_time)
+    end
+
+    it 'restricts the request to the selected transports' do
+      lines = @live.result_display.map { |entry| entry[:line] }
+      refute_empty lines
+      lines.each { |line| refute_match(/\AU\d/, line) }
+    end
+  end
+
+  describe 'transport filtering' do
+    it 'only returns U-Bahn departures when only U-Bahn is requested' do
+      live = build_live('Westfriedhof', transports: [:u], now: BASE_TIME)
+      live.fetch
+      lines = live.result_display.map { |entry| entry[:line] }
+      refute_empty lines
+      lines.each { |line| assert_match(/\AU\d/, line) }
+    end
   end
 
   describe 'Parser' do
-    describe 'unknown station' do
-      it 'should inform about incorrent stations and possible fits' do
-        @mvglive = MVG::Live.new 'Moosfeld'
-        @mvglive.fetch
-        @mvglive.station_unknown.must_equal true
-      end
+    before do
+      @live = build_live('Hackerbrücke', now: BASE_TIME)
+      stub_response(@live, [
+        { 'label' => '17', 'destination' => 'Schwanseestraße', 'realtimeDepartureTime' => BASE_MS },
+        { 'label' => 'S8', 'destination' => 'Herrsching', 'realtimeDepartureTime' => BASE_MS + 240_000 },
+        { 'label' => '16', 'destination' => 'St. Emmeram', 'plannedDepartureTime' => BASE_MS + 120_000 },
+        { 'label' => 'N17', 'destination' => 'Effnerplatz', 'realtimeDepartureTime' => BASE_MS - 60_000 },
+        { 'label' => 'S1', 'destination' => 'Flughafen', 'realtimeDepartureTime' => BASE_MS + 600_000, 'cancelled' => true }
+      ])
+      @live.parse
     end
 
-    describe 'with S-Bahn' do
-      before do
-        @mvglive = build(:hackerbruecke)
-        @mvglive.retrieve
-        @mvglive.parse
-      end
+    it 'keeps the order of the response for display' do
+      assert_equal(
+        [
+          ['17', 'Schwanseestraße', 0],
+          ['S8', 'Herrsching', 4],
+          ['16', 'St. Emmeram', 2],
+          ['N17', 'Effnerplatz', 0]
+        ],
+        @live.result_display.map { |entry| [entry[:line], entry[:destination], entry[:minutes]] }
+      )
+    end
 
-      describe 'display' do
-        it 'should have the correct entry size' do
-          @mvglive.result_display.must_be_instance_of Array
-          @mvglive.result_display.size.must_equal 20
-        end
+    it 'sorts by minutes, line and destination' do
+      assert_equal(
+        [['17', 0], ['N17', 0], ['16', 2], ['S8', 4]],
+        @live.result_sorted.map { |entry| [entry[:line], entry[:minutes]] }
+      )
+    end
 
-        it 'should display the correct order' do
-          @mvglive.result_display.map do |e|
-            [e[:line], e[:destination], e[:minutes]]
-          end.must_equal [
-            ['17', 'Schwanseestraße', 0],
-            ['17', 'Amalienburgstraße', 0],
-            ['16', 'St. Emmeram', 3],
-            ['16', 'Romanplatz', 7],
-            ['17', 'Schwanseestraße', 7],
-            ['17', 'Amalienburgstraße', 11],
-            ['16', 'St. Emmeram', 13],
-            ['S4', 'Grafrath', 0],
-            ['S1', 'München Flughafen Terminal', 2],
-            ['S7', 'Kreuzstraße', 3],
-            ['S8', 'Herrsching', 4],
-            ['S6', 'München Ost', 6],
-            ['S2', 'Erding', 7],
-            ['S2', 'Petershausen(Obb)', 8],
-            ['S8', 'München Flughafen Terminal', 10],
-            ['S6', 'Starnberg', 10],
-            ['S7', 'Höllriegelskreuth', 12],
-            ['S1', 'München Ost', 13],
-            ['S1', 'München Ost', 13],
-            ['S4', 'Grafing Bahnhof', 15]
-          ]
-        end
-      end
+    it 'skips cancelled departures' do
+      refute_includes @live.result_display.map { |entry| entry[:line] }, 'S1'
+    end
 
-      describe 'sorted' do
-        it 'should have the correct entry size' do
-          @mvglive.result_sorted.must_be_instance_of Array
-          @mvglive.result_sorted.size.must_equal 20
-        end
-
-        it 'should have the correct order' do
-          @mvglive.result_sorted.map { |e| [e[:line], e[:destination], e[:minutes]] }.must_equal [
-            ['S2', 'Erding', 1],
-            ['16', 'St. Emmeram', 2],
-            ['17', 'Schwanseestraße', 2],
-            ['S2', 'Altomünster', 2],
-            ['S2', 'Petershausen(Obb)', 2],
-            ['17', 'Amalienburgstraße', 4],
-            ['S6', 'Tutzing', 4],
-            ['S8', 'München Flughafen Terminal', 4],
-            ['S7', 'Wolfratshausen', 6],
-            ['16', 'St. Emmeram', 7],
-            ['S1', 'München Ost', 7],
-            ['S1', 'München Ost', 7],
-            ['S4', 'Grafing Bahnhof', 9],
-            ['16', 'Romanplatz', 10],
-            ['S3', 'Mammendorf', 10],
-            ['17', 'Schwanseestraße', 12],
-            ['S3', 'Holzkirchen', 12],
-            ['S4', 'Geltendorf', 14],
-            ['17', 'Amalienburgstraße', 15],
-            ['S1', 'München Flughafen Terminal', 16]
-          ]
-        end
-      end
-
-      describe 'both' do
-        it 'should have the same number of entries' do
-          @mvglive.result_sorted.size.must_equal @mvglive.result_display.size
-        end
-      end
+    it 'handles error objects instead of a departure array' do
+      stub_response(@live, { 'status' => 404, 'error' => 'Not Found' })
+      assert_equal [], @live.parse
     end
   end
 
   describe 'CLI' do
-    it 'should apply convenience hacks on station names' do
-      MVG::Live.any_instance.expects(:cli_station_hacks_for)
-               .with('Stachus').returns('Karlsplatz (Stachus)')
-      MVG::Live.any_instance.expects(:cli_station_hacks_for)
-               .with('Karlsplatz').returns('Karlsplatz (Stachus)')
-      MVG::Live.any_instance.expects(:cli_station_hacks_for)
-               .with('Moosach Bf').returns('Moosach Bf.')
-      MVG::Live.any_instance.expects(:cli_station_hacks_for)
-               .with('Moosach Bahnhof').returns('Moosach Bf.')
-    end
-
-    it 'should apply the following convenince hacks' do
+    it 'should apply the following convenience hacks' do
       hacks = [
         ['Stachus',         'Karlsplatz (Stachus)'],
         ['Karlsplatz',      'Karlsplatz (Stachus)'],
-        ['Moosach Bf',      'Moosach Bf.'],
-        ['Moosach Bahnhof', 'Moosach Bf.']
+        ['Moosach Bf',      'Moosach'],
+        ['Moosach Bf.',     'Moosach'],
+        ['Moosach Bahnhof', 'Moosach']
       ]
 
       hacks.each do |hack|
-        mvglive = MVG::Live.new
-        mvglive.cli_station_hacks_for(hack[0]).must_equal hack[1]
+        assert_equal hack[1], build_live.cli_station_hacks_for(hack[0])
       end
+    end
+
+    it 'resolves the hacked station names in CLI mode' do
+      live = build_live('Moosach Bf', transports: [:u], cli: true)
+      live.fetch
+      assert_equal false, live.station_unknown
+      refute_nil live.global_id
+    end
+
+    it 'only applies the hacks in CLI mode' do
+      live = build_live('Stachus', cli: true)
+      assert_equal 'Karlsplatz (Stachus)', live.send(:station_to_mvg, 'Stachus')
+      assert_equal 'Stachus', build_live('Stachus').send(:station_to_mvg, 'Stachus')
+    end
+
+    it 'loads the default station and transports from MVG_FILE' do
+      file = Tempfile.new('mvg')
+      file.write(JSON.generate('default_transports' => ['u'], 'default_station' => 'Hauptbahnhof'))
+      file.flush
+
+      ENV['MVG_FILE'] = file.path
+      live = build_live(nil, transports: [], load_user_defaults: true)
+      assert_equal 'Hauptbahnhof', live.station
+      assert_equal [:u], live.transports
+      assert_equal file.path, live.using_config_file
+    ensure
+      ENV.delete('MVG_FILE')
+      file.close!
+    end
+
+    it 'keeps the given station when loading defaults' do
+      file = Tempfile.new('mvg')
+      file.write(JSON.generate('default_station' => 'Hauptbahnhof'))
+      file.flush
+
+      ENV['MVG_FILE'] = file.path
+      assert_equal 'Marienplatz', build_live('Marienplatz', load_user_defaults: true).station
+    ensure
+      ENV.delete('MVG_FILE')
+      file.close!
     end
   end
 
   describe 'Output' do
+    before do
+      @live = build_live('Hackerbrücke', transports: %i[tram])
+      @live.instance_variable_set(:@server_time, '12:34')
+      @live.instance_variable_set(:@result_sorted, [
+        { line: '16', destination: 'St. Emmeram', minutes: 2 }
+      ])
+    end
+
+    describe 'display' do
+      it 'lists the departures' do
+        output = @live.to_display
+        assert_includes output, '[ 12:34 ]'
+        assert_includes output, '16  | St. Emmeram                   |  2 Minuten'
+        assert_includes output, 'Hackerbrücke: Tram'
+      end
+
+      it 'lists alternatives for unknown stations' do
+        live = build_live('Tor')
+        live.instance_variable_set(:@station_unknown, true)
+        live.instance_variable_set(:@station_alternates, ['Sendlinger Tor'])
+        assert_includes live.to_display, ' - Sendlinger Tor'
+      end
+    end
+
     describe 'JSON' do
+      it 'contains the result and meta data' do
+        parsed = JSON.parse(@live.to_json, symbolize_names: true)
+        assert_equal 'Hackerbrücke', parsed[:station]
+        assert_equal '12:34', parsed[:server_time]
+        assert_equal [{ line: '16', destination: 'St. Emmeram', minutes: 2 }], parsed[:result_sorted]
+      end
     end
   end
 end

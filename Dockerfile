@@ -1,19 +1,15 @@
-FROM ruby:2.5-alpine
+FROM ruby:4.0-alpine
 
 COPY . /usr/src/mvg-live
 WORKDIR /usr/src/mvg-live
 
-RUN rm -rf .bundle
-RUN rm -rf Gemfile.lock
+RUN apk add --no-cache tzdata && \
+    rm -rf .bundle Gemfile.lock && \
+    gem build mvg-live.gemspec && \
+    gem install --no-document mvg-live-*.gem && \
+    rm -f mvg-live-*.gem
 
-RUN apk --update add --virtual build_deps \
-    build-base git ruby-dev \
-    libxml2 libxml2-dev libxslt libxslt-dev && \
-    gem install nokogiri && \
-    bundle install --without development && \
-    rake install:local && \
-    apk del build_deps git
-
+ENV TZ=Europe/Berlin
 
 WORKDIR /
 RUN rm -rf /usr/src/mvg-live

@@ -90,7 +90,7 @@ module MVG
           next unless file && File.exist?(file)
           data = JSON.parse File.read(file)
 
-          if @station.empty? && data['default_station']
+          if @station.to_s.empty? && data['default_station']
             @station = data['default_station']
           end
 
@@ -104,8 +104,8 @@ module MVG
         case station
         when 'Stachus', 'Karlsplatz'
           'Karlsplatz (Stachus)'
-        when 'Moosach Bf', 'Moosach Bahnhof'
-          'Moosach Bf.'
+        when 'Moosach Bf', 'Moosach Bf.', 'Moosach Bahnhof'
+          'Moosach'
         else
           station
         end

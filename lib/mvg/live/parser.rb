@@ -1,61 +1,27 @@
-require 'nokogiri'
-
 module MVG
   class Live
     module Parser
       def parse(_args = {})
+        return if @station_unknown
         return unless @response_obj
 
-        @doc = Nokogiri::HTML(@response_obj.body)
+        @server_time = Time.now.strftime('%H:%M')
+        now = (@now || Time.now).to_f * 1000
 
-        # <table class="departureTable departureView">
-        # ...
-        # <tr class="rowOdd">
-        #   <td class="lineColumn">N16</td>
-        #   <td class="stationColumn">
-        #     Effnerplatz
-        #     <span class="spacer">&nbsp;</span>
-        #   </td>
-        #   <td class="inMinColumn">13</td>
-        # </tr>
+        body = @response_obj.body
+        results = (body.is_a?(Array) ? body : []).reject { |entry| entry['cancelled'] }.map do |entry|
+          departure = entry['realtimeDepartureTime'] || entry['plannedDepartureTime']
 
-        # <tr class="rowEven">
-        #   <td class="lineColumn">N16</td>
-        #   <td class="stationColumn">
-        #     Amalienburgstraße
-        #     <span class="spacer">&nbsp;</span>
-        #   </td>
-        #   <td class="inMinColumn">28</td>
-        # </tr>
-
-        # <tr>
-        # <td colspan="4" class="sBahnHeader">S-Bahn M&uuml;nchen (Daten DB Regio AG)</td>
-
-        @server_time = @doc.xpath('//td[@class="serverTimeColumn"]/text()')
-
-        results = []
-
-        @doc.xpath('//table[@class="departureTable departureView"]/tr[@class="rowOdd" or @class="rowEven"]').each do |entry|
-          result = {}
-          result[:line]        = entry.at('td[@class="lineColumn"]/text()').to_s.strip
-          result[:destination] = to_utf8(entry.at('td[@class="stationColumn"]/text()').to_s.strip)
-          result[:minutes]     = entry.at('td[@class="inMinColumn"]/text()').to_s.to_i
-
-          results << result
+          {
+            line: to_utf8(entry['label'].to_s.strip),
+            destination: to_utf8(entry['destination'].to_s.strip),
+            minutes: departure ? [((departure - now) / 60_000.0).round, 0].max : 0
+          }
         end
 
-        if results.empty?
-          @station_unknown = true
-          @station_alternates = []
-
-          @doc.xpath('//table[@class="departureTable header"]//li/a/text()').each do |alt|
-            @station_alternates << to_utf8(alt.to_s.strip)
-          end
-        else
-          @result_display = results
-          @result_sorted  = results.sort_by { |i,| [i[:minutes], i[:line], i[:destination]] }
-          @result_sorted
-        end
+        @result_display = results
+        @result_sorted  = results.sort_by { |entry| [entry[:minutes], entry[:line], entry[:destination]] }
+        @result_sorted
       end
     end
   end

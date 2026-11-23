@@ -1,8 +1,0 @@
-sudo: false
-language: ruby
-before_install: gem install bundler
-rvm:
-  - 2.5
-  - 2.4
-  - ruby-head
-script: bundle exec rake test
