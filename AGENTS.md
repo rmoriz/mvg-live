@@ -97,6 +97,6 @@ Parser specs use `stub_response` to inject a payload, so they need no cassette.
 - Commit messages explain the *why*. Do **not** add
   `Co-Authored-By: Claude`.
 - Push commits and release notes to `origin/main`; CI must stay green
-  (`.github/workflows/ci.yml`, Ruby 3.3/3.4/4.0/head).
+  (`.github/workflows/ci.yml`, Ruby 3.4/4.0/head).
 - `spec/` and the Docker image must keep working without network access at
   build time (Docker only needs rubygems.org during `gem install`).
