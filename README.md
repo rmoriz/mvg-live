@@ -51,6 +51,13 @@ Returns a human readable listing of the next departures
     $ mvg Marienplatz
     $ mvg Moosach Bf.
 
+Only departures within the next 60 minutes are shown. Pass `--all` to see
+everything the API returns:
+
+    $ mvg --all Marienplatz
+
+`mvg --help` lists both flags.
+
 example output:
 
     ================================================

@@ -3,6 +3,27 @@ require 'json'
 module MVG
   class Live
     module CLI
+      def self.usage
+        <<~TEXT
+          Usage: mvg [--all] <station>
+                 mvg_json [--all] <station>
+
+            --all    show all departures returned by the API instead of
+                     only those within the next #{MVG::Live::DEFAULT_MAX_MINUTES} minutes
+            --help   show this help
+        TEXT
+      end
+
+      def self.parse_argv(argv)
+        args = argv.dup
+
+        {
+          all: !args.delete('--all').nil?,
+          help: !(args.delete('--help') || args.delete('-h')).nil?,
+          station: args.join(' ')
+        }
+      end
+
       module ClassMethods
         def fetch(*args)
           MVG::Live.new(*args).fetch
@@ -51,7 +72,9 @@ module MVG
           end
 
         else
-          txt += "#{@station}: #{@transports.map(&:to_s).map(&:capitalize).join(', ')}\n"
+          txt += "#{@station}: #{@transports.map(&:to_s).map(&:capitalize).join(', ')}"
+          txt += " (alle Abfahrten)" unless @max_minutes
+          txt += "\n"
           txt += '=' * 38 + "[ #{@server_time} ]=\n"
 
           @result_sorted.each do |e|
@@ -68,6 +91,7 @@ module MVG
         response[:station]            = station
         response[:server_time]        = server_time
         response[:transports]         = transports
+        response[:max_minutes]        = max_minutes
         response[:using_config_file]  = using_config_file
 
         response[:result_sorted]      = result_sorted

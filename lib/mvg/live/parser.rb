@@ -18,6 +18,7 @@ module MVG
             minutes: departure ? [((departure - now) / 60_000.0).round, 0].max : 0
           }
         end
+        results = results.select { |entry| entry[:minutes] <= @max_minutes } if @max_minutes
 
         @result_display = results
         @result_sorted  = results.sort_by { |entry| [entry[:minutes], entry[:line], entry[:destination]] }

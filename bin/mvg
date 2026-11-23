@@ -3,4 +3,11 @@
 require 'rubygems'
 require 'mvg/live'
 
-puts MVG::Live.fetch_to_display ARGV.join(' '), load_user_defaults: true, cli: true
+options = MVG::Live::CLI.parse_argv(ARGV)
+
+if options[:help]
+  puts MVG::Live::CLI.usage
+  exit
+end
+
+puts MVG::Live.fetch_to_display options[:station], load_user_defaults: true, cli: true, all: options[:all]

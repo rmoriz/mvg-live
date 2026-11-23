@@ -14,6 +14,8 @@ Complete modernization after the shutdown of the old
 - Replace the `schema:`/`host:`/`path:` options with `base_url:`.
 - Fix `MVG::Live.new` crashing when user defaults are loaded without a station.
 - Skip cancelled departures and clamp departures in the past to 0 minutes.
+- Limit departures to the next 60 minutes by default; `--all` shows the full
+  API response.
 - Read the server time from the local clock, the new API does not send one.
 - Refresh the Docker image (Ruby 4.0 Alpine, no build dependencies).
 

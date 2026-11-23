@@ -58,7 +58,10 @@ Request flow: `fetch` → `resolve_station` (GET `locations`) → GET `departure
 - Station matching is exact (case-insensitive, trailing additions in
   parentheses stripped, `aliases` honoured). Suggestions are only a fallback.
 - Minutes are derived from `realtimeDepartureTime`/`plannedDepartureTime` and
-  clamped at 0; cancelled entries are skipped.
+  clamped at 0; cancelled entries are skipped. Results are cut at
+  `DEFAULT_MAX_MINUTES` (60) unless `all: true` is passed.
+- CLI flags are parsed by `MVG::Live::CLI.parse_argv` (`--all`, `--help`); the
+  usage text lives in `MVG::Live::CLI.usage`.
 
 ## Tests and fixtures
 

@@ -110,7 +110,7 @@ describe MVG::Live do
 
   describe 'station lookup' do
     it 'suggests alternatives for unknown stations' do
-      live = build_live('Tor')
+      live = build_live('Tor', now: BASE_TIME)
       live.fetch
       assert_equal true, live.station_unknown
       assert_includes live.station_alternates, 'Sendlinger Tor'
@@ -118,14 +118,14 @@ describe MVG::Live do
     end
 
     it 'matches station names case-insensitively' do
-      live = build_live('hackerbrücke')
+      live = build_live('hackerbrücke', now: BASE_TIME)
       live.fetch
       assert_equal false, live.station_unknown
       refute_nil live.global_id
     end
 
     it 'strips station additions in parentheses' do
-      live = build_live('Hauptbahnhof')
+      live = build_live('Hauptbahnhof', now: BASE_TIME)
       live.fetch
       assert_equal false, live.station_unknown
       assert_operator live.result_sorted.size, :>, 0
@@ -216,6 +216,36 @@ describe MVG::Live do
       refute_includes @live.result_display.map { |entry| entry[:line] }, 'S1'
     end
 
+    it 'drops departures beyond the default 60 minutes' do
+      @live.instance_variable_set(:@response_obj, MVG::Live::HTTP::Response.new(200, [
+        { 'label' => '16', 'destination' => 'St. Emmeram', 'realtimeDepartureTime' => BASE_MS + 59 * 60_000 },
+        { 'label' => '17', 'destination' => 'Schwanseestraße', 'realtimeDepartureTime' => BASE_MS + 61 * 60_000 }
+      ]))
+      @live.parse
+      assert_equal ['16'], @live.result_display.map { |entry| entry[:line] }
+    end
+
+    it 'keeps all departures with all: true' do
+      live = build_live('Hackerbrücke', now: BASE_TIME, all: true)
+      stub_response(live, [
+        { 'label' => '16', 'destination' => 'St. Emmeram', 'realtimeDepartureTime' => BASE_MS + 59 * 60_000 },
+        { 'label' => '17', 'destination' => 'Schwanseestraße', 'realtimeDepartureTime' => BASE_MS + 120 * 60_000 }
+      ])
+      live.parse
+      assert_equal %w[16 17], live.result_display.map { |entry| entry[:line] }
+      assert_nil live.max_minutes
+    end
+
+    it 'honours a custom max_minutes' do
+      live = build_live('Hackerbrücke', now: BASE_TIME, max_minutes: 10)
+      stub_response(live, [
+        { 'label' => '16', 'destination' => 'St. Emmeram', 'realtimeDepartureTime' => BASE_MS + 5 * 60_000 },
+        { 'label' => '17', 'destination' => 'Schwanseestraße', 'realtimeDepartureTime' => BASE_MS + 11 * 60_000 }
+      ])
+      live.parse
+      assert_equal ['16'], live.result_display.map { |entry| entry[:line] }
+    end
+
     it 'handles error objects instead of a departure array' do
       stub_response(@live, { 'status' => 404, 'error' => 'Not Found' })
       assert_equal [], @live.parse
@@ -223,6 +253,20 @@ describe MVG::Live do
   end
 
   describe 'CLI' do
+    it 'parses the --all flag and keeps the station intact' do
+      parsed = MVG::Live::CLI.parse_argv(['--all', 'Hauptbahnhof'])
+      assert_equal true, parsed[:all]
+      assert_equal 'Hauptbahnhof', parsed[:station]
+    end
+
+    it 'parses --help' do
+      assert_equal true, MVG::Live::CLI.parse_argv(['--help'])[:help]
+      assert_equal true, MVG::Live::CLI.parse_argv(['-h'])[:help]
+    end
+
+    it 'documents the default limit in the usage text' do
+      assert_includes MVG::Live::CLI.usage, MVG::Live::DEFAULT_MAX_MINUTES.to_s
+    end
     it 'should apply the following convenience hacks' do
       hacks = [
         ['Stachus',         'Karlsplatz (Stachus)'],
@@ -296,7 +340,7 @@ describe MVG::Live do
       end
 
       it 'lists alternatives for unknown stations' do
-        live = build_live('Tor')
+        live = build_live('Tor', now: BASE_TIME)
         live.instance_variable_set(:@station_unknown, true)
         live.instance_variable_set(:@station_alternates, ['Sendlinger Tor'])
         assert_includes live.to_display, ' - Sendlinger Tor'
@@ -308,6 +352,7 @@ describe MVG::Live do
         parsed = JSON.parse(@live.to_json, symbolize_names: true)
         assert_equal 'Hackerbrücke', parsed[:station]
         assert_equal '12:34', parsed[:server_time]
+        assert_equal 60, parsed[:max_minutes]
         assert_equal [{ line: '16', destination: 'St. Emmeram', minutes: 2 }], parsed[:result_sorted]
       end
     end

@@ -11,6 +11,7 @@ module MVG
     include MVG::Live::CLI
 
     ALL_TRANSPORTS = %i[u bus tram s].freeze
+    DEFAULT_MAX_MINUTES = 60
 
     # Collects validation errors without pulling in ActiveModel.
     class Errors
@@ -48,6 +49,7 @@ module MVG
     attr_reader :cli
     attr_reader :errors
     attr_reader :global_id
+    attr_reader :max_minutes
     attr_reader :response_obj
     attr_reader :result_display
     attr_reader :result_sorted
@@ -72,6 +74,7 @@ module MVG
       @now        = opts[:now]
       @logger     = opts[:logger]
       @cli        = opts[:cli] || false
+      @max_minutes = opts[:all] ? nil : opts.fetch(:max_minutes, DEFAULT_MAX_MINUTES)
 
       @errors = Errors.new
       @server_time = '??:??'
