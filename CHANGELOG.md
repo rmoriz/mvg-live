@@ -9,7 +9,7 @@ Complete modernization after the shutdown of the old
   (`/api/bgw-pt/v3/locations` and `/api/bgw-pt/v3/departures`).
 - Drop Nokogiri and multi_json, the response is parsed as JSON.
 - Upgrade to Faraday 2 and ActiveModel/ActiveSupport 8.
-- Require Ruby >= 3.2; replace the dead Travis CI setup with GitHub Actions.
+- Require Ruby >= 3.3; replace the dead Travis CI setup with GitHub Actions.
 - Replace the `schema:`/`host:`/`path:` options with `base_url:`.
 - Fix `MVG::Live.new` crashing when user defaults are loaded without a station.
 - Skip cancelled departures and clamp departures in the past to 0 minutes.

@@ -24,7 +24,7 @@ docker run -it --rm rmoriz/mvg-live Marienplatz
 gem install mvg-live
 ```
 
-Please use Ruby 3.2.x or greater.
+Please use Ruby 3.3.x or greater.
 
 
 ## Ruby
@@ -141,7 +141,7 @@ passing `base_url:`.
 
 - Nokogiri/HTML scraping was replaced by the JSON API, the old
   `www.mvg-live.de` endpoint is gone.
-- Faraday 2 and ActiveModel 8 are required, Ruby 3.2+.
+- Faraday 2 and ActiveModel 8 are required, Ruby 3.3+.
 - `schema:`, `host:` and `path:` options were replaced by `base_url:`.
 - The default encoding is UTF-8 (`encoding:` is still available).
 

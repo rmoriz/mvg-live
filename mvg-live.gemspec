@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.executables   = Dir.glob('bin/*', base: __dir__).map { |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '>= 3.2.0'
+  s.required_ruby_version = '>= 3.3.0'
 
   s.add_runtime_dependency 'activemodel', '~> 8.0'
   s.add_runtime_dependency 'activesupport', '~> 8.0'
